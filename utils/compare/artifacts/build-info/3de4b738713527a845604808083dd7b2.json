@@ -1,0 +1,2631 @@
+{
+	"id": "3de4b738713527a845604808083dd7b2",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.7",
+	"solcLongVersion": "0.8.7+commit.e28d00a7",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"utils/compare/Compare_Interface.sol": {
+				"content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\nimport \"./Compare.sol\";\r\n\r\n/**\r\n * @dev Collection of functions related to compare elements.\r\n *\r\n * To use modifiers in contract function signatures, modifiers must be within an interface or contract,\r\n * cannot be inside a library. \r\n * \r\n * For this you use an interface or a contract that implements them within it.\r\n */\r\n\r\ninterface ICompare {\r\n\r\n    /**\r\n     * @dev Check if the (string)(`_a`) is equal to (string)(`_b`)\r\n     */\r\n    modifier compareStrings ( string memory _a, string memory _b  ) \r\n    {\r\n        require ( Compare.compareStrings( _a, _b ) );\r\n        _;\r\n    }\r\n\r\n    /**\r\n     * @dev Check if the (uint256)(`_a`) is equal to (uint256)(`_b`)\r\n     */\r\n    modifier compareUint256 ( uint256 _a, uint256 _b  ) \r\n    {\r\n        require ( Compare.compareUint256( _a, _b ) );\r\n        _;\r\n    }\r\n\r\n    /**\r\n     * @dev Check if the (uint256)(`_a`) is greater than zero\r\n     */\r\n    modifier nGreaterThenZero ( uint256 _a ) \r\n    {\r\n        require ( Compare.nGreaterThenZero( _a ) );\r\n        _;\r\n    }\r\n}"
+			},
+			"utils/compare/Compare.sol": {
+				"content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\n/**\r\n * @dev Collection of functions related to compare elements.\r\n * \r\n * ABI:\r\n * The Contract Application Binary Interface (ABI) is the standard way to interact with contracts in the Ethereum ecosystem, \r\n * both from outside the blockchain and for contract-to-contract interaction. Data is encoded according to its type, \r\n * as described in this specification. The encoding is not self describing and thus requires a schema in order to decode.\r\n *\r\n * We assume the interface functions of a contract are strongly typed, known at compilation time and static. \r\n * We assume that all contracts will have the interface definitions of any contracts they call available at compile-time.\r\n * \r\n * Non-standard Packed Mode:\r\n * Through abi.encodePacked(), Solidity supports a non-standard packed mode where:\r\n *    - types shorter than 32 bytes are concatenated directly, without padding or sign extension\r\n *    - dynamic types are encoded in-place and without the length.\r\n *    - array elements are padded, but still encoded in-place\r\n *\r\n * More specifically:\r\n * - During the encoding, everything is encoded in-place. This means that there is no distinction between head and tail, \r\n *   as in the ABI encoding, and the length of an array is not encoded.\r\n * - The direct arguments of abi.encodePacked are encoded without padding, as long as they are not arrays (or string or bytes).\r\n * - The encoding of an array is the concatenation of the encoding of its elements with padding.\r\n * - Dynamically-sized types like string, bytes or uint[] are encoded without their length field.\r\n * - The encoding of string or bytes does not apply padding at the end unless it is part of an array or struct (then it is padded to a multiple of 32 bytes).\r\n * \r\n * Warning:\r\n * If you use keccak256(abi.encodePacked(a, b)) and both a and b are dynamic types, \r\n * it is easy to craft collisions in the hash value by moving parts of a into b and vice-versa. \r\n * More specifically, abi.encodePacked(\"a\", \"bc\") == abi.encodePacked(\"ab\", \"c\"). \r\n * If you use abi.encodePacked for signatures, authentication or data integrity, make sure to always use the same types and check that at most one of them is dynamic. \r\n * Unless there is a compelling reason, abi.encode should be preferred.\r\n */\r\nlibrary Compare {\r\n\r\n    /**\r\n     * @dev Check if the (string)(`_a`) is equal to (string)(`_b`)\r\n     */\r\n    modifier compareStringsI ( string memory _a, string memory _b  ) \r\n    {\r\n        require ( keccak256 ( abi.encodePacked( ( _a ) ) ) == keccak256 ( abi.encodePacked ( ( _b ) ) ), \"Compare Strings: the two strings are not the same\" );\r\n        _;\r\n    }\r\n\r\n    /**\r\n     * @dev Check if the (uint256)(`_a`) is equal to (uint256)(`_b`)\r\n     */\r\n    modifier compareUint256I ( uint256 _a, uint256 _b  ) \r\n    {\r\n        require ( keccak256 ( abi.encodePacked( ( _a ) ) ) == keccak256 ( abi.encodePacked( ( _b ) ) ), \"Compare Uint256: the two uint256 are not the same\" );\r\n        _;\r\n    }\r\n\r\n    /**\r\n     * @dev Check if the (uint256)(`_a`) is greater than zero\r\n     */\r\n    modifier nGreaterThenZeroI ( uint256 _a ) \r\n    {\r\n        require ( _a > 0, \"Compare Uint256: the uint256 is not greater then zero\" );\r\n        _;\r\n    }\r\n\r\n    /**\r\n     * @dev This function returns true if the (string)(`_a`) is equal to (string)(`_b`)\r\n     *\r\n     * Requirements:\r\n     *\r\n     * - The (string)(`_a`) must be equal to (string)(`_b`)\r\n     */\r\n    function compareStrings ( string memory _a, string memory _b ) internal pure \r\n                                                                   compareStringsI(_a, _b) \r\n                                                                   returns ( bool ) \r\n    {\r\n        return true;\r\n    }\r\n\r\n    /**\r\n     * @dev This function returns true if the (uint256)(`_a`) is equal to (uint256)(`_b`)\r\n     *\r\n     * Requirements:\r\n     *\r\n     * - The (uint256)(`_a`) must be equal to (uint256)(`_b`)\r\n     */\r\n    function compareUint256 ( uint256 _a, uint256 _b ) internal pure \r\n                                                       compareUint256I(_a, _b) \r\n                                                       returns ( bool ) \r\n    {\r\n        return true;\r\n    }\r\n\r\n    /**\r\n     * @dev This function returns true if the (uint256)(`_a`) is greater than 0\r\n     *\r\n     * Requirements:\r\n     *\r\n     * - The (uint256)(`_a`) must be greater than 0\r\n     */\r\n    function nGreaterThenZero ( uint256 _a ) internal pure \r\n                                             nGreaterThenZeroI(_a) \r\n                                             returns ( bool ) \r\n    {\r\n        return true;\r\n    }\r\n\r\n}"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			}
+		}
+	},
+	"output": {
+		"contracts": {
+			"utils/compare/Compare.sol": {
+				"Compare": {
+					"abi": [],
+					"devdoc": {
+						"details": "Collection of functions related to compare elements.  ABI: The Contract Application Binary Interface (ABI) is the standard way to interact with contracts in the Ethereum ecosystem,  both from outside the blockchain and for contract-to-contract interaction. Data is encoded according to its type,  as described in this specification. The encoding is not self describing and thus requires a schema in order to decode. We assume the interface functions of a contract are strongly typed, known at compilation time and static.  We assume that all contracts will have the interface definitions of any contracts they call available at compile-time.  Non-standard Packed Mode: Through abi.encodePacked(), Solidity supports a non-standard packed mode where:    - types shorter than 32 bytes are concatenated directly, without padding or sign extension    - dynamic types are encoded in-place and without the length.    - array elements are padded, but still encoded in-place More specifically: - During the encoding, everything is encoded in-place. This means that there is no distinction between head and tail,    as in the ABI encoding, and the length of an array is not encoded. - The direct arguments of abi.encodePacked are encoded without padding, as long as they are not arrays (or string or bytes). - The encoding of an array is the concatenation of the encoding of its elements with padding. - Dynamically-sized types like string, bytes or uint[] are encoded without their length field. - The encoding of string or bytes does not apply padding at the end unless it is part of an array or struct (then it is padded to a multiple of 32 bytes).  Warning: If you use keccak256(abi.encodePacked(a, b)) and both a and b are dynamic types,  it is easy to craft collisions in the hash value by moving parts of a into b and vice-versa.  More specifically, abi.encodePacked(\"a\", \"bc\") == abi.encodePacked(\"ab\", \"c\").  If you use abi.encodePacked for signatures, authentication or data integrity, make sure to always use the same types and check that at most one of them is dynamic.  Unless there is a compelling reason, abi.encode should be preferred.",
+						"kind": "dev",
+						"methods": {},
+						"version": 1
+					},
+					"evm": {
+						"assembly": "    /* \"utils/compare/Compare.sol\":2337:4685  library Compare {\r... */\n  dataSize(sub_0)\n  dataOffset(sub_0)\n  0x0b\n  dup3\n  dup3\n  dup3\n  codecopy\n  dup1\n  mload\n  0x00\n  byte\n  0x73\n  eq\n  tag_1\n  jumpi\n  mstore(0x00, 0x4e487b7100000000000000000000000000000000000000000000000000000000)\n  mstore(0x04, 0x00)\n  revert(0x00, 0x24)\ntag_1:\n  mstore(0x00, address)\n  0x73\n  dup2\n  mstore8\n  dup3\n  dup2\n  return\nstop\n\nsub_0: assembly {\n        /* \"utils/compare/Compare.sol\":2337:4685  library Compare {\r... */\n      eq(address, deployTimeAddress())\n      mstore(0x40, 0x80)\n      0x00\n      dup1\n      revert\n\n    auxdata: 0xa26469706673582212202d199cc973e10cfdc88cccb81cf588806becdffc2dd2863fe789c3427cd9247864736f6c63430008070033\n}\n",
+						"bytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"linkReferences": {},
+							"object": "60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212202d199cc973e10cfdc88cccb81cf588806becdffc2dd2863fe789c3427cd9247864736f6c63430008070033",
+							"opcodes": "PUSH1 0x56 PUSH1 0x50 PUSH1 0xB DUP3 DUP3 DUP3 CODECOPY DUP1 MLOAD PUSH1 0x0 BYTE PUSH1 0x73 EQ PUSH1 0x43 JUMPI PUSH32 0x4E487B7100000000000000000000000000000000000000000000000000000000 PUSH1 0x0 MSTORE PUSH1 0x0 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH1 0x0 REVERT JUMPDEST ADDRESS PUSH1 0x0 MSTORE PUSH1 0x73 DUP2 MSTORE8 DUP3 DUP2 RETURN INVALID PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0x2D NOT SWAP13 0xC9 PUSH20 0xE10CFDC88CCCB81CF588806BECDFFC2DD2863FE7 DUP10 0xC3 TIMESTAMP PUSH29 0xD9247864736F6C63430008070033000000000000000000000000000000 ",
+							"sourceMap": "2337:2348:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"
+						},
+						"deployedBytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"immutableReferences": {},
+							"linkReferences": {},
+							"object": "73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212202d199cc973e10cfdc88cccb81cf588806becdffc2dd2863fe789c3427cd9247864736f6c63430008070033",
+							"opcodes": "PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0x2D NOT SWAP13 0xC9 PUSH20 0xE10CFDC88CCCB81CF588806BECDFFC2DD2863FE7 DUP10 0xC3 TIMESTAMP PUSH29 0xD9247864736F6C63430008070033000000000000000000000000000000 ",
+							"sourceMap": "2337:2348:0:-:0;;;;;;;;"
+						},
+						"gasEstimates": {
+							"creation": {
+								"codeDepositCost": "17200",
+								"executionCost": "97",
+								"totalCost": "17297"
+							},
+							"internal": {
+								"compareStrings(string memory,string memory)": "infinite",
+								"compareUint256(uint256,uint256)": "infinite",
+								"nGreaterThenZero(uint256)": "infinite"
+							}
+						},
+						"legacyAssembly": {
+							".code": [
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "PUSH #[$]",
+									"source": 0,
+									"value": "0000000000000000000000000000000000000000000000000000000000000000"
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "PUSH [$]",
+									"source": 0,
+									"value": "0000000000000000000000000000000000000000000000000000000000000000"
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "PUSH",
+									"source": 0,
+									"value": "B"
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "DUP3",
+									"source": 0
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "DUP3",
+									"source": 0
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "DUP3",
+									"source": 0
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "CODECOPY",
+									"source": 0
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "DUP1",
+									"source": 0
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "MLOAD",
+									"source": 0
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "PUSH",
+									"source": 0,
+									"value": "0"
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "BYTE",
+									"source": 0
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "PUSH",
+									"source": 0,
+									"value": "73"
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "EQ",
+									"source": 0
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "PUSH [tag]",
+									"source": 0,
+									"value": "1"
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "JUMPI",
+									"source": 0
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "PUSH",
+									"source": 0,
+									"value": "4E487B7100000000000000000000000000000000000000000000000000000000"
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "PUSH",
+									"source": 0,
+									"value": "0"
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "MSTORE",
+									"source": 0
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "PUSH",
+									"source": 0,
+									"value": "0"
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "PUSH",
+									"source": 0,
+									"value": "4"
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "MSTORE",
+									"source": 0
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "PUSH",
+									"source": 0,
+									"value": "24"
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "PUSH",
+									"source": 0,
+									"value": "0"
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "REVERT",
+									"source": 0
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "tag",
+									"source": 0,
+									"value": "1"
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "JUMPDEST",
+									"source": 0
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "ADDRESS",
+									"source": 0
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "PUSH",
+									"source": 0,
+									"value": "0"
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "MSTORE",
+									"source": 0
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "PUSH",
+									"source": 0,
+									"value": "73"
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "DUP2",
+									"source": 0
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "MSTORE8",
+									"source": 0
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "DUP3",
+									"source": 0
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "DUP2",
+									"source": 0
+								},
+								{
+									"begin": 2337,
+									"end": 4685,
+									"name": "RETURN",
+									"source": 0
+								}
+							],
+							".data": {
+								"0": {
+									".auxdata": "a26469706673582212202d199cc973e10cfdc88cccb81cf588806becdffc2dd2863fe789c3427cd9247864736f6c63430008070033",
+									".code": [
+										{
+											"begin": 2337,
+											"end": 4685,
+											"name": "PUSHDEPLOYADDRESS",
+											"source": 0
+										},
+										{
+											"begin": 2337,
+											"end": 4685,
+											"name": "ADDRESS",
+											"source": 0
+										},
+										{
+											"begin": 2337,
+											"end": 4685,
+											"name": "EQ",
+											"source": 0
+										},
+										{
+											"begin": 2337,
+											"end": 4685,
+											"name": "PUSH",
+											"source": 0,
+											"value": "80"
+										},
+										{
+											"begin": 2337,
+											"end": 4685,
+											"name": "PUSH",
+											"source": 0,
+											"value": "40"
+										},
+										{
+											"begin": 2337,
+											"end": 4685,
+											"name": "MSTORE",
+											"source": 0
+										},
+										{
+											"begin": 2337,
+											"end": 4685,
+											"name": "PUSH",
+											"source": 0,
+											"value": "0"
+										},
+										{
+											"begin": 2337,
+											"end": 4685,
+											"name": "DUP1",
+											"source": 0
+										},
+										{
+											"begin": 2337,
+											"end": 4685,
+											"name": "REVERT",
+											"source": 0
+										}
+									]
+								}
+							}
+						},
+						"methodIdentifiers": {}
+					},
+					"metadata": "{\"compiler\":{\"version\":\"0.8.7+commit.e28d00a7\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"details\":\"Collection of functions related to compare elements.  ABI: The Contract Application Binary Interface (ABI) is the standard way to interact with contracts in the Ethereum ecosystem,  both from outside the blockchain and for contract-to-contract interaction. Data is encoded according to its type,  as described in this specification. The encoding is not self describing and thus requires a schema in order to decode. We assume the interface functions of a contract are strongly typed, known at compilation time and static.  We assume that all contracts will have the interface definitions of any contracts they call available at compile-time.  Non-standard Packed Mode: Through abi.encodePacked(), Solidity supports a non-standard packed mode where:    - types shorter than 32 bytes are concatenated directly, without padding or sign extension    - dynamic types are encoded in-place and without the length.    - array elements are padded, but still encoded in-place More specifically: - During the encoding, everything is encoded in-place. This means that there is no distinction between head and tail,    as in the ABI encoding, and the length of an array is not encoded. - The direct arguments of abi.encodePacked are encoded without padding, as long as they are not arrays (or string or bytes). - The encoding of an array is the concatenation of the encoding of its elements with padding. - Dynamically-sized types like string, bytes or uint[] are encoded without their length field. - The encoding of string or bytes does not apply padding at the end unless it is part of an array or struct (then it is padded to a multiple of 32 bytes).  Warning: If you use keccak256(abi.encodePacked(a, b)) and both a and b are dynamic types,  it is easy to craft collisions in the hash value by moving parts of a into b and vice-versa.  More specifically, abi.encodePacked(\\\"a\\\", \\\"bc\\\") == abi.encodePacked(\\\"ab\\\", \\\"c\\\").  If you use abi.encodePacked for signatures, authentication or data integrity, make sure to always use the same types and check that at most one of them is dynamic.  Unless there is a compelling reason, abi.encode should be preferred.\",\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"utils/compare/Compare.sol\":\"Compare\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"utils/compare/Compare.sol\":{\"keccak256\":\"0xb8b223257d7a853e0a1f1d4c042592e99acc6e6f1569b02533a795637371197c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8370ee3075c944cf4d2584a246fec54ed7b051ba4b74ed09e8db3bcd0651f80d\",\"dweb:/ipfs/QmZ5Bj3MMHrKG7dDR6YhacFcy5UFdp6wwWy4kCDzjVXb8C\"]}},\"version\":1}",
+					"storageLayout": {
+						"storage": [],
+						"types": null
+					},
+					"userdoc": {
+						"kind": "user",
+						"methods": {},
+						"version": 1
+					}
+				}
+			},
+			"utils/compare/Compare_Interface.sol": {
+				"ICompare": {
+					"abi": [],
+					"devdoc": {
+						"details": "Collection of functions related to compare elements. To use modifiers in contract function signatures, modifiers must be within an interface or contract, cannot be inside a library.   For this you use an interface or a contract that implements them within it.",
+						"kind": "dev",
+						"methods": {},
+						"version": 1
+					},
+					"evm": {
+						"assembly": "",
+						"bytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"deployedBytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"immutableReferences": {},
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"gasEstimates": null,
+						"legacyAssembly": null,
+						"methodIdentifiers": {}
+					},
+					"metadata": "{\"compiler\":{\"version\":\"0.8.7+commit.e28d00a7\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"details\":\"Collection of functions related to compare elements. To use modifiers in contract function signatures, modifiers must be within an interface or contract, cannot be inside a library.   For this you use an interface or a contract that implements them within it.\",\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"utils/compare/Compare_Interface.sol\":\"ICompare\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"utils/compare/Compare.sol\":{\"keccak256\":\"0xb8b223257d7a853e0a1f1d4c042592e99acc6e6f1569b02533a795637371197c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8370ee3075c944cf4d2584a246fec54ed7b051ba4b74ed09e8db3bcd0651f80d\",\"dweb:/ipfs/QmZ5Bj3MMHrKG7dDR6YhacFcy5UFdp6wwWy4kCDzjVXb8C\"]},\"utils/compare/Compare_Interface.sol\":{\"keccak256\":\"0x6e57c73890c3e3d97a9ad923d4414f94af2f2aefa8fa8fe14199df481dc5722c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ec3a8001a2afaf78ba51d467cb852418d7dfb10e25f2ebea0beb2c708e8b30cf\",\"dweb:/ipfs/QmbeLkRFDHobtB45hqvXV7E5NvBMkDEt6QBu2ekVRSwCLK\"]}},\"version\":1}",
+					"storageLayout": {
+						"storage": [],
+						"types": null
+					},
+					"userdoc": {
+						"kind": "user",
+						"methods": {},
+						"version": 1
+					}
+				}
+			}
+		},
+		"sources": {
+			"utils/compare/Compare.sol": {
+				"ast": {
+					"absolutePath": "utils/compare/Compare.sol",
+					"exportedSymbols": {
+						"Compare": [
+							121
+						]
+					},
+					"id": 122,
+					"license": "MIT",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 1,
+							"literals": [
+								"solidity",
+								"^",
+								"0.8",
+								".0"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "33:23:0"
+						},
+						{
+							"abstract": false,
+							"baseContracts": [],
+							"contractDependencies": [],
+							"contractKind": "library",
+							"documentation": {
+								"id": 2,
+								"nodeType": "StructuredDocumentation",
+								"src": "60:2275:0",
+								"text": " @dev Collection of functions related to compare elements.\n \n ABI:\n The Contract Application Binary Interface (ABI) is the standard way to interact with contracts in the Ethereum ecosystem, \n both from outside the blockchain and for contract-to-contract interaction. Data is encoded according to its type, \n as described in this specification. The encoding is not self describing and thus requires a schema in order to decode.\n We assume the interface functions of a contract are strongly typed, known at compilation time and static. \n We assume that all contracts will have the interface definitions of any contracts they call available at compile-time.\n \n Non-standard Packed Mode:\n Through abi.encodePacked(), Solidity supports a non-standard packed mode where:\n    - types shorter than 32 bytes are concatenated directly, without padding or sign extension\n    - dynamic types are encoded in-place and without the length.\n    - array elements are padded, but still encoded in-place\n More specifically:\n - During the encoding, everything is encoded in-place. This means that there is no distinction between head and tail, \n   as in the ABI encoding, and the length of an array is not encoded.\n - The direct arguments of abi.encodePacked are encoded without padding, as long as they are not arrays (or string or bytes).\n - The encoding of an array is the concatenation of the encoding of its elements with padding.\n - Dynamically-sized types like string, bytes or uint[] are encoded without their length field.\n - The encoding of string or bytes does not apply padding at the end unless it is part of an array or struct (then it is padded to a multiple of 32 bytes).\n \n Warning:\n If you use keccak256(abi.encodePacked(a, b)) and both a and b are dynamic types, \n it is easy to craft collisions in the hash value by moving parts of a into b and vice-versa. \n More specifically, abi.encodePacked(\"a\", \"bc\") == abi.encodePacked(\"ab\", \"c\"). \n If you use abi.encodePacked for signatures, authentication or data integrity, make sure to always use the same types and check that at most one of them is dynamic. \n Unless there is a compelling reason, abi.encode should be preferred."
+							},
+							"fullyImplemented": true,
+							"id": 121,
+							"linearizedBaseContracts": [
+								121
+							],
+							"name": "Compare",
+							"nameLocation": "2345:7:0",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"body": {
+										"id": 29,
+										"nodeType": "Block",
+										"src": "2519:181:0",
+										"statements": [
+											{
+												"expression": {
+													"arguments": [
+														{
+															"commonType": {
+																"typeIdentifier": "t_bytes32",
+																"typeString": "bytes32"
+															},
+															"id": 24,
+															"isConstant": false,
+															"isLValue": false,
+															"isPure": false,
+															"lValueRequested": false,
+															"leftExpression": {
+																"arguments": [
+																	{
+																		"arguments": [
+																			{
+																				"components": [
+																					{
+																						"id": 13,
+																						"name": "_a",
+																						"nodeType": "Identifier",
+																						"overloadedDeclarations": [],
+																						"referencedDeclaration": 5,
+																						"src": "2572:2:0",
+																						"typeDescriptions": {
+																							"typeIdentifier": "t_string_memory_ptr",
+																							"typeString": "string memory"
+																						}
+																					}
+																				],
+																				"id": 14,
+																				"isConstant": false,
+																				"isInlineArray": false,
+																				"isLValue": false,
+																				"isPure": false,
+																				"lValueRequested": false,
+																				"nodeType": "TupleExpression",
+																				"src": "2570:6:0",
+																				"typeDescriptions": {
+																					"typeIdentifier": "t_string_memory_ptr",
+																					"typeString": "string memory"
+																				}
+																			}
+																		],
+																		"expression": {
+																			"argumentTypes": [
+																				{
+																					"typeIdentifier": "t_string_memory_ptr",
+																					"typeString": "string memory"
+																				}
+																			],
+																			"expression": {
+																				"id": 11,
+																				"name": "abi",
+																				"nodeType": "Identifier",
+																				"overloadedDeclarations": [],
+																				"referencedDeclaration": 4294967295,
+																				"src": "2552:3:0",
+																				"typeDescriptions": {
+																					"typeIdentifier": "t_magic_abi",
+																					"typeString": "abi"
+																				}
+																			},
+																			"id": 12,
+																			"isConstant": false,
+																			"isLValue": false,
+																			"isPure": true,
+																			"lValueRequested": false,
+																			"memberName": "encodePacked",
+																			"nodeType": "MemberAccess",
+																			"src": "2552:16:0",
+																			"typeDescriptions": {
+																				"typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+																				"typeString": "function () pure returns (bytes memory)"
+																			}
+																		},
+																		"id": 15,
+																		"isConstant": false,
+																		"isLValue": false,
+																		"isPure": false,
+																		"kind": "functionCall",
+																		"lValueRequested": false,
+																		"names": [],
+																		"nodeType": "FunctionCall",
+																		"src": "2552:26:0",
+																		"tryCall": false,
+																		"typeDescriptions": {
+																			"typeIdentifier": "t_bytes_memory_ptr",
+																			"typeString": "bytes memory"
+																		}
+																	}
+																],
+																"expression": {
+																	"argumentTypes": [
+																		{
+																			"typeIdentifier": "t_bytes_memory_ptr",
+																			"typeString": "bytes memory"
+																		}
+																	],
+																	"id": 10,
+																	"name": "keccak256",
+																	"nodeType": "Identifier",
+																	"overloadedDeclarations": [],
+																	"referencedDeclaration": 4294967288,
+																	"src": "2540:9:0",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+																		"typeString": "function (bytes memory) pure returns (bytes32)"
+																	}
+																},
+																"id": 16,
+																"isConstant": false,
+																"isLValue": false,
+																"isPure": false,
+																"kind": "functionCall",
+																"lValueRequested": false,
+																"names": [],
+																"nodeType": "FunctionCall",
+																"src": "2540:40:0",
+																"tryCall": false,
+																"typeDescriptions": {
+																	"typeIdentifier": "t_bytes32",
+																	"typeString": "bytes32"
+																}
+															},
+															"nodeType": "BinaryOperation",
+															"operator": "==",
+															"rightExpression": {
+																"arguments": [
+																	{
+																		"arguments": [
+																			{
+																				"components": [
+																					{
+																						"id": 20,
+																						"name": "_b",
+																						"nodeType": "Identifier",
+																						"overloadedDeclarations": [],
+																						"referencedDeclaration": 7,
+																						"src": "2617:2:0",
+																						"typeDescriptions": {
+																							"typeIdentifier": "t_string_memory_ptr",
+																							"typeString": "string memory"
+																						}
+																					}
+																				],
+																				"id": 21,
+																				"isConstant": false,
+																				"isInlineArray": false,
+																				"isLValue": false,
+																				"isPure": false,
+																				"lValueRequested": false,
+																				"nodeType": "TupleExpression",
+																				"src": "2615:6:0",
+																				"typeDescriptions": {
+																					"typeIdentifier": "t_string_memory_ptr",
+																					"typeString": "string memory"
+																				}
+																			}
+																		],
+																		"expression": {
+																			"argumentTypes": [
+																				{
+																					"typeIdentifier": "t_string_memory_ptr",
+																					"typeString": "string memory"
+																				}
+																			],
+																			"expression": {
+																				"id": 18,
+																				"name": "abi",
+																				"nodeType": "Identifier",
+																				"overloadedDeclarations": [],
+																				"referencedDeclaration": 4294967295,
+																				"src": "2596:3:0",
+																				"typeDescriptions": {
+																					"typeIdentifier": "t_magic_abi",
+																					"typeString": "abi"
+																				}
+																			},
+																			"id": 19,
+																			"isConstant": false,
+																			"isLValue": false,
+																			"isPure": true,
+																			"lValueRequested": false,
+																			"memberName": "encodePacked",
+																			"nodeType": "MemberAccess",
+																			"src": "2596:16:0",
+																			"typeDescriptions": {
+																				"typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+																				"typeString": "function () pure returns (bytes memory)"
+																			}
+																		},
+																		"id": 22,
+																		"isConstant": false,
+																		"isLValue": false,
+																		"isPure": false,
+																		"kind": "functionCall",
+																		"lValueRequested": false,
+																		"names": [],
+																		"nodeType": "FunctionCall",
+																		"src": "2596:27:0",
+																		"tryCall": false,
+																		"typeDescriptions": {
+																			"typeIdentifier": "t_bytes_memory_ptr",
+																			"typeString": "bytes memory"
+																		}
+																	}
+																],
+																"expression": {
+																	"argumentTypes": [
+																		{
+																			"typeIdentifier": "t_bytes_memory_ptr",
+																			"typeString": "bytes memory"
+																		}
+																	],
+																	"id": 17,
+																	"name": "keccak256",
+																	"nodeType": "Identifier",
+																	"overloadedDeclarations": [],
+																	"referencedDeclaration": 4294967288,
+																	"src": "2584:9:0",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+																		"typeString": "function (bytes memory) pure returns (bytes32)"
+																	}
+																},
+																"id": 23,
+																"isConstant": false,
+																"isLValue": false,
+																"isPure": false,
+																"kind": "functionCall",
+																"lValueRequested": false,
+																"names": [],
+																"nodeType": "FunctionCall",
+																"src": "2584:41:0",
+																"tryCall": false,
+																"typeDescriptions": {
+																	"typeIdentifier": "t_bytes32",
+																	"typeString": "bytes32"
+																}
+															},
+															"src": "2540:85:0",
+															"typeDescriptions": {
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															}
+														},
+														{
+															"hexValue": "436f6d7061726520537472696e67733a207468652074776f20737472696e677320617265206e6f74207468652073616d65",
+															"id": 25,
+															"isConstant": false,
+															"isLValue": false,
+															"isPure": true,
+															"kind": "string",
+															"lValueRequested": false,
+															"nodeType": "Literal",
+															"src": "2627:51:0",
+															"typeDescriptions": {
+																"typeIdentifier": "t_stringliteral_10b519ca8ebcf2d9e874f914976d14867f9c6b61f807e8d38b76889981293e04",
+																"typeString": "literal_string \"Compare Strings: the two strings are not the same\""
+															},
+															"value": "Compare Strings: the two strings are not the same"
+														}
+													],
+													"expression": {
+														"argumentTypes": [
+															{
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															},
+															{
+																"typeIdentifier": "t_stringliteral_10b519ca8ebcf2d9e874f914976d14867f9c6b61f807e8d38b76889981293e04",
+																"typeString": "literal_string \"Compare Strings: the two strings are not the same\""
+															}
+														],
+														"id": 9,
+														"name": "require",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [
+															4294967278,
+															4294967278
+														],
+														"referencedDeclaration": 4294967278,
+														"src": "2530:7:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+															"typeString": "function (bool,string memory) pure"
+														}
+													},
+													"id": 26,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"kind": "functionCall",
+													"lValueRequested": false,
+													"names": [],
+													"nodeType": "FunctionCall",
+													"src": "2530:150:0",
+													"tryCall": false,
+													"typeDescriptions": {
+														"typeIdentifier": "t_tuple$__$",
+														"typeString": "tuple()"
+													}
+												},
+												"id": 27,
+												"nodeType": "ExpressionStatement",
+												"src": "2530:150:0"
+											},
+											{
+												"id": 28,
+												"nodeType": "PlaceholderStatement",
+												"src": "2691:1:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 3,
+										"nodeType": "StructuredDocumentation",
+										"src": "2362:80:0",
+										"text": " @dev Check if the (string)(`_a`) is equal to (string)(`_b`)"
+									},
+									"id": 30,
+									"name": "compareStringsI",
+									"nameLocation": "2457:15:0",
+									"nodeType": "ModifierDefinition",
+									"parameters": {
+										"id": 8,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 5,
+												"mutability": "mutable",
+												"name": "_a",
+												"nameLocation": "2489:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 30,
+												"src": "2475:16:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 4,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "2475:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 7,
+												"mutability": "mutable",
+												"name": "_b",
+												"nameLocation": "2507:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 30,
+												"src": "2493:16:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 6,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "2493:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2473:39:0"
+									},
+									"src": "2448:252:0",
+									"virtual": false,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 57,
+										"nodeType": "Block",
+										"src": "2855:180:0",
+										"statements": [
+											{
+												"expression": {
+													"arguments": [
+														{
+															"commonType": {
+																"typeIdentifier": "t_bytes32",
+																"typeString": "bytes32"
+															},
+															"id": 52,
+															"isConstant": false,
+															"isLValue": false,
+															"isPure": false,
+															"lValueRequested": false,
+															"leftExpression": {
+																"arguments": [
+																	{
+																		"arguments": [
+																			{
+																				"components": [
+																					{
+																						"id": 41,
+																						"name": "_a",
+																						"nodeType": "Identifier",
+																						"overloadedDeclarations": [],
+																						"referencedDeclaration": 33,
+																						"src": "2908:2:0",
+																						"typeDescriptions": {
+																							"typeIdentifier": "t_uint256",
+																							"typeString": "uint256"
+																						}
+																					}
+																				],
+																				"id": 42,
+																				"isConstant": false,
+																				"isInlineArray": false,
+																				"isLValue": false,
+																				"isPure": false,
+																				"lValueRequested": false,
+																				"nodeType": "TupleExpression",
+																				"src": "2906:6:0",
+																				"typeDescriptions": {
+																					"typeIdentifier": "t_uint256",
+																					"typeString": "uint256"
+																				}
+																			}
+																		],
+																		"expression": {
+																			"argumentTypes": [
+																				{
+																					"typeIdentifier": "t_uint256",
+																					"typeString": "uint256"
+																				}
+																			],
+																			"expression": {
+																				"id": 39,
+																				"name": "abi",
+																				"nodeType": "Identifier",
+																				"overloadedDeclarations": [],
+																				"referencedDeclaration": 4294967295,
+																				"src": "2888:3:0",
+																				"typeDescriptions": {
+																					"typeIdentifier": "t_magic_abi",
+																					"typeString": "abi"
+																				}
+																			},
+																			"id": 40,
+																			"isConstant": false,
+																			"isLValue": false,
+																			"isPure": true,
+																			"lValueRequested": false,
+																			"memberName": "encodePacked",
+																			"nodeType": "MemberAccess",
+																			"src": "2888:16:0",
+																			"typeDescriptions": {
+																				"typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+																				"typeString": "function () pure returns (bytes memory)"
+																			}
+																		},
+																		"id": 43,
+																		"isConstant": false,
+																		"isLValue": false,
+																		"isPure": false,
+																		"kind": "functionCall",
+																		"lValueRequested": false,
+																		"names": [],
+																		"nodeType": "FunctionCall",
+																		"src": "2888:26:0",
+																		"tryCall": false,
+																		"typeDescriptions": {
+																			"typeIdentifier": "t_bytes_memory_ptr",
+																			"typeString": "bytes memory"
+																		}
+																	}
+																],
+																"expression": {
+																	"argumentTypes": [
+																		{
+																			"typeIdentifier": "t_bytes_memory_ptr",
+																			"typeString": "bytes memory"
+																		}
+																	],
+																	"id": 38,
+																	"name": "keccak256",
+																	"nodeType": "Identifier",
+																	"overloadedDeclarations": [],
+																	"referencedDeclaration": 4294967288,
+																	"src": "2876:9:0",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+																		"typeString": "function (bytes memory) pure returns (bytes32)"
+																	}
+																},
+																"id": 44,
+																"isConstant": false,
+																"isLValue": false,
+																"isPure": false,
+																"kind": "functionCall",
+																"lValueRequested": false,
+																"names": [],
+																"nodeType": "FunctionCall",
+																"src": "2876:40:0",
+																"tryCall": false,
+																"typeDescriptions": {
+																	"typeIdentifier": "t_bytes32",
+																	"typeString": "bytes32"
+																}
+															},
+															"nodeType": "BinaryOperation",
+															"operator": "==",
+															"rightExpression": {
+																"arguments": [
+																	{
+																		"arguments": [
+																			{
+																				"components": [
+																					{
+																						"id": 48,
+																						"name": "_b",
+																						"nodeType": "Identifier",
+																						"overloadedDeclarations": [],
+																						"referencedDeclaration": 35,
+																						"src": "2952:2:0",
+																						"typeDescriptions": {
+																							"typeIdentifier": "t_uint256",
+																							"typeString": "uint256"
+																						}
+																					}
+																				],
+																				"id": 49,
+																				"isConstant": false,
+																				"isInlineArray": false,
+																				"isLValue": false,
+																				"isPure": false,
+																				"lValueRequested": false,
+																				"nodeType": "TupleExpression",
+																				"src": "2950:6:0",
+																				"typeDescriptions": {
+																					"typeIdentifier": "t_uint256",
+																					"typeString": "uint256"
+																				}
+																			}
+																		],
+																		"expression": {
+																			"argumentTypes": [
+																				{
+																					"typeIdentifier": "t_uint256",
+																					"typeString": "uint256"
+																				}
+																			],
+																			"expression": {
+																				"id": 46,
+																				"name": "abi",
+																				"nodeType": "Identifier",
+																				"overloadedDeclarations": [],
+																				"referencedDeclaration": 4294967295,
+																				"src": "2932:3:0",
+																				"typeDescriptions": {
+																					"typeIdentifier": "t_magic_abi",
+																					"typeString": "abi"
+																				}
+																			},
+																			"id": 47,
+																			"isConstant": false,
+																			"isLValue": false,
+																			"isPure": true,
+																			"lValueRequested": false,
+																			"memberName": "encodePacked",
+																			"nodeType": "MemberAccess",
+																			"src": "2932:16:0",
+																			"typeDescriptions": {
+																				"typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+																				"typeString": "function () pure returns (bytes memory)"
+																			}
+																		},
+																		"id": 50,
+																		"isConstant": false,
+																		"isLValue": false,
+																		"isPure": false,
+																		"kind": "functionCall",
+																		"lValueRequested": false,
+																		"names": [],
+																		"nodeType": "FunctionCall",
+																		"src": "2932:26:0",
+																		"tryCall": false,
+																		"typeDescriptions": {
+																			"typeIdentifier": "t_bytes_memory_ptr",
+																			"typeString": "bytes memory"
+																		}
+																	}
+																],
+																"expression": {
+																	"argumentTypes": [
+																		{
+																			"typeIdentifier": "t_bytes_memory_ptr",
+																			"typeString": "bytes memory"
+																		}
+																	],
+																	"id": 45,
+																	"name": "keccak256",
+																	"nodeType": "Identifier",
+																	"overloadedDeclarations": [],
+																	"referencedDeclaration": 4294967288,
+																	"src": "2920:9:0",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+																		"typeString": "function (bytes memory) pure returns (bytes32)"
+																	}
+																},
+																"id": 51,
+																"isConstant": false,
+																"isLValue": false,
+																"isPure": false,
+																"kind": "functionCall",
+																"lValueRequested": false,
+																"names": [],
+																"nodeType": "FunctionCall",
+																"src": "2920:40:0",
+																"tryCall": false,
+																"typeDescriptions": {
+																	"typeIdentifier": "t_bytes32",
+																	"typeString": "bytes32"
+																}
+															},
+															"src": "2876:84:0",
+															"typeDescriptions": {
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															}
+														},
+														{
+															"hexValue": "436f6d706172652055696e743235363a207468652074776f2075696e7432353620617265206e6f74207468652073616d65",
+															"id": 53,
+															"isConstant": false,
+															"isLValue": false,
+															"isPure": true,
+															"kind": "string",
+															"lValueRequested": false,
+															"nodeType": "Literal",
+															"src": "2962:51:0",
+															"typeDescriptions": {
+																"typeIdentifier": "t_stringliteral_59bc297d7022228e0de593c30f9f42f844d798b30bedb8d487e204b47cd1e5ef",
+																"typeString": "literal_string \"Compare Uint256: the two uint256 are not the same\""
+															},
+															"value": "Compare Uint256: the two uint256 are not the same"
+														}
+													],
+													"expression": {
+														"argumentTypes": [
+															{
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															},
+															{
+																"typeIdentifier": "t_stringliteral_59bc297d7022228e0de593c30f9f42f844d798b30bedb8d487e204b47cd1e5ef",
+																"typeString": "literal_string \"Compare Uint256: the two uint256 are not the same\""
+															}
+														],
+														"id": 37,
+														"name": "require",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [
+															4294967278,
+															4294967278
+														],
+														"referencedDeclaration": 4294967278,
+														"src": "2866:7:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+															"typeString": "function (bool,string memory) pure"
+														}
+													},
+													"id": 54,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"kind": "functionCall",
+													"lValueRequested": false,
+													"names": [],
+													"nodeType": "FunctionCall",
+													"src": "2866:149:0",
+													"tryCall": false,
+													"typeDescriptions": {
+														"typeIdentifier": "t_tuple$__$",
+														"typeString": "tuple()"
+													}
+												},
+												"id": 55,
+												"nodeType": "ExpressionStatement",
+												"src": "2866:149:0"
+											},
+											{
+												"id": 56,
+												"nodeType": "PlaceholderStatement",
+												"src": "3026:1:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 31,
+										"nodeType": "StructuredDocumentation",
+										"src": "2708:82:0",
+										"text": " @dev Check if the (uint256)(`_a`) is equal to (uint256)(`_b`)"
+									},
+									"id": 58,
+									"name": "compareUint256I",
+									"nameLocation": "2805:15:0",
+									"nodeType": "ModifierDefinition",
+									"parameters": {
+										"id": 36,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 33,
+												"mutability": "mutable",
+												"name": "_a",
+												"nameLocation": "2831:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 58,
+												"src": "2823:10:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 32,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "2823:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 35,
+												"mutability": "mutable",
+												"name": "_b",
+												"nameLocation": "2843:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 58,
+												"src": "2835:10:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 34,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "2835:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2821:27:0"
+									},
+									"src": "2796:239:0",
+									"virtual": false,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 71,
+										"nodeType": "Block",
+										"src": "3172:106:0",
+										"statements": [
+											{
+												"expression": {
+													"arguments": [
+														{
+															"commonType": {
+																"typeIdentifier": "t_uint256",
+																"typeString": "uint256"
+															},
+															"id": 66,
+															"isConstant": false,
+															"isLValue": false,
+															"isPure": false,
+															"lValueRequested": false,
+															"leftExpression": {
+																"id": 64,
+																"name": "_a",
+																"nodeType": "Identifier",
+																"overloadedDeclarations": [],
+																"referencedDeclaration": 61,
+																"src": "3193:2:0",
+																"typeDescriptions": {
+																	"typeIdentifier": "t_uint256",
+																	"typeString": "uint256"
+																}
+															},
+															"nodeType": "BinaryOperation",
+															"operator": ">",
+															"rightExpression": {
+																"hexValue": "30",
+																"id": 65,
+																"isConstant": false,
+																"isLValue": false,
+																"isPure": true,
+																"kind": "number",
+																"lValueRequested": false,
+																"nodeType": "Literal",
+																"src": "3198:1:0",
+																"typeDescriptions": {
+																	"typeIdentifier": "t_rational_0_by_1",
+																	"typeString": "int_const 0"
+																},
+																"value": "0"
+															},
+															"src": "3193:6:0",
+															"typeDescriptions": {
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															}
+														},
+														{
+															"hexValue": "436f6d706172652055696e743235363a207468652075696e74323536206973206e6f742067726561746572207468656e207a65726f",
+															"id": 67,
+															"isConstant": false,
+															"isLValue": false,
+															"isPure": true,
+															"kind": "string",
+															"lValueRequested": false,
+															"nodeType": "Literal",
+															"src": "3201:55:0",
+															"typeDescriptions": {
+																"typeIdentifier": "t_stringliteral_b0ffa1976e6ff9ce1d2d19ddbe63a0e8deb51a8684987ef9a3a225f565144bea",
+																"typeString": "literal_string \"Compare Uint256: the uint256 is not greater then zero\""
+															},
+															"value": "Compare Uint256: the uint256 is not greater then zero"
+														}
+													],
+													"expression": {
+														"argumentTypes": [
+															{
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															},
+															{
+																"typeIdentifier": "t_stringliteral_b0ffa1976e6ff9ce1d2d19ddbe63a0e8deb51a8684987ef9a3a225f565144bea",
+																"typeString": "literal_string \"Compare Uint256: the uint256 is not greater then zero\""
+															}
+														],
+														"id": 63,
+														"name": "require",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [
+															4294967278,
+															4294967278
+														],
+														"referencedDeclaration": 4294967278,
+														"src": "3183:7:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+															"typeString": "function (bool,string memory) pure"
+														}
+													},
+													"id": 68,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"kind": "functionCall",
+													"lValueRequested": false,
+													"names": [],
+													"nodeType": "FunctionCall",
+													"src": "3183:75:0",
+													"tryCall": false,
+													"typeDescriptions": {
+														"typeIdentifier": "t_tuple$__$",
+														"typeString": "tuple()"
+													}
+												},
+												"id": 69,
+												"nodeType": "ExpressionStatement",
+												"src": "3183:75:0"
+											},
+											{
+												"id": 70,
+												"nodeType": "PlaceholderStatement",
+												"src": "3269:1:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 59,
+										"nodeType": "StructuredDocumentation",
+										"src": "3043:75:0",
+										"text": " @dev Check if the (uint256)(`_a`) is greater than zero"
+									},
+									"id": 72,
+									"name": "nGreaterThenZeroI",
+									"nameLocation": "3133:17:0",
+									"nodeType": "ModifierDefinition",
+									"parameters": {
+										"id": 62,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 61,
+												"mutability": "mutable",
+												"name": "_a",
+												"nameLocation": "3161:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 72,
+												"src": "3153:10:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 60,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "3153:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3151:14:0"
+									},
+									"src": "3124:154:0",
+									"virtual": false,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 88,
+										"nodeType": "Block",
+										"src": "3754:30:0",
+										"statements": [
+											{
+												"expression": {
+													"hexValue": "74727565",
+													"id": 86,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": true,
+													"kind": "bool",
+													"lValueRequested": false,
+													"nodeType": "Literal",
+													"src": "3772:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bool",
+														"typeString": "bool"
+													},
+													"value": "true"
+												},
+												"functionReturnParameters": 85,
+												"id": 87,
+												"nodeType": "Return",
+												"src": "3765:11:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 73,
+										"nodeType": "StructuredDocumentation",
+										"src": "3286:200:0",
+										"text": " @dev This function returns true if the (string)(`_a`) is equal to (string)(`_b`)\n Requirements:\n - The (string)(`_a`) must be equal to (string)(`_b`)"
+									},
+									"id": 89,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [
+										{
+											"arguments": [
+												{
+													"id": 80,
+													"name": "_a",
+													"nodeType": "Identifier",
+													"overloadedDeclarations": [],
+													"referencedDeclaration": 75,
+													"src": "3654:2:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_memory_ptr",
+														"typeString": "string memory"
+													}
+												},
+												{
+													"id": 81,
+													"name": "_b",
+													"nodeType": "Identifier",
+													"overloadedDeclarations": [],
+													"referencedDeclaration": 77,
+													"src": "3658:2:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_memory_ptr",
+														"typeString": "string memory"
+													}
+												}
+											],
+											"id": 82,
+											"kind": "modifierInvocation",
+											"modifierName": {
+												"id": 79,
+												"name": "compareStringsI",
+												"nodeType": "IdentifierPath",
+												"referencedDeclaration": 30,
+												"src": "3638:15:0"
+											},
+											"nodeType": "ModifierInvocation",
+											"src": "3638:23:0"
+										}
+									],
+									"name": "compareStrings",
+									"nameLocation": "3501:14:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 78,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 75,
+												"mutability": "mutable",
+												"name": "_a",
+												"nameLocation": "3532:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 89,
+												"src": "3518:16:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 74,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "3518:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 77,
+												"mutability": "mutable",
+												"name": "_b",
+												"nameLocation": "3550:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 89,
+												"src": "3536:16:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 76,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "3536:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3516:38:0"
+									},
+									"returnParameters": {
+										"id": 85,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 84,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 89,
+												"src": "3741:4:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												},
+												"typeName": {
+													"id": 83,
+													"name": "bool",
+													"nodeType": "ElementaryTypeName",
+													"src": "3741:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bool",
+														"typeString": "bool"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3739:8:0"
+									},
+									"scope": 121,
+									"src": "3492:292:0",
+									"stateMutability": "pure",
+									"virtual": false,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 105,
+										"nodeType": "Block",
+										"src": "4228:30:0",
+										"statements": [
+											{
+												"expression": {
+													"hexValue": "74727565",
+													"id": 103,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": true,
+													"kind": "bool",
+													"lValueRequested": false,
+													"nodeType": "Literal",
+													"src": "4246:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bool",
+														"typeString": "bool"
+													},
+													"value": "true"
+												},
+												"functionReturnParameters": 102,
+												"id": 104,
+												"nodeType": "Return",
+												"src": "4239:11:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 90,
+										"nodeType": "StructuredDocumentation",
+										"src": "3792:204:0",
+										"text": " @dev This function returns true if the (uint256)(`_a`) is equal to (uint256)(`_b`)\n Requirements:\n - The (uint256)(`_a`) must be equal to (uint256)(`_b`)"
+									},
+									"id": 106,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [
+										{
+											"arguments": [
+												{
+													"id": 97,
+													"name": "_a",
+													"nodeType": "Identifier",
+													"overloadedDeclarations": [],
+													"referencedDeclaration": 92,
+													"src": "4140:2:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												{
+													"id": 98,
+													"name": "_b",
+													"nodeType": "Identifier",
+													"overloadedDeclarations": [],
+													"referencedDeclaration": 94,
+													"src": "4144:2:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												}
+											],
+											"id": 99,
+											"kind": "modifierInvocation",
+											"modifierName": {
+												"id": 96,
+												"name": "compareUint256I",
+												"nodeType": "IdentifierPath",
+												"referencedDeclaration": 58,
+												"src": "4124:15:0"
+											},
+											"nodeType": "ModifierInvocation",
+											"src": "4124:23:0"
+										}
+									],
+									"name": "compareUint256",
+									"nameLocation": "4011:14:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 95,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 92,
+												"mutability": "mutable",
+												"name": "_a",
+												"nameLocation": "4036:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 106,
+												"src": "4028:10:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 91,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "4028:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 94,
+												"mutability": "mutable",
+												"name": "_b",
+												"nameLocation": "4048:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 106,
+												"src": "4040:10:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 93,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "4040:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "4026:26:0"
+									},
+									"returnParameters": {
+										"id": 102,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 101,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 106,
+												"src": "4215:4:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												},
+												"typeName": {
+													"id": 100,
+													"name": "bool",
+													"nodeType": "ElementaryTypeName",
+													"src": "4215:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bool",
+														"typeString": "bool"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "4213:8:0"
+									},
+									"scope": 121,
+									"src": "4002:256:0",
+									"stateMutability": "pure",
+									"virtual": false,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 119,
+										"nodeType": "Block",
+										"src": "4650:30:0",
+										"statements": [
+											{
+												"expression": {
+													"hexValue": "74727565",
+													"id": 117,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": true,
+													"kind": "bool",
+													"lValueRequested": false,
+													"nodeType": "Literal",
+													"src": "4668:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bool",
+														"typeString": "bool"
+													},
+													"value": "true"
+												},
+												"functionReturnParameters": 116,
+												"id": 118,
+												"nodeType": "Return",
+												"src": "4661:11:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 107,
+										"nodeType": "StructuredDocumentation",
+										"src": "4266:184:0",
+										"text": " @dev This function returns true if the (uint256)(`_a`) is greater than 0\n Requirements:\n - The (uint256)(`_a`) must be greater than 0"
+									},
+									"id": 120,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [
+										{
+											"arguments": [
+												{
+													"id": 112,
+													"name": "_a",
+													"nodeType": "Identifier",
+													"overloadedDeclarations": [],
+													"referencedDeclaration": 109,
+													"src": "4576:2:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												}
+											],
+											"id": 113,
+											"kind": "modifierInvocation",
+											"modifierName": {
+												"id": 111,
+												"name": "nGreaterThenZeroI",
+												"nodeType": "IdentifierPath",
+												"referencedDeclaration": 72,
+												"src": "4558:17:0"
+											},
+											"nodeType": "ModifierInvocation",
+											"src": "4558:21:0"
+										}
+									],
+									"name": "nGreaterThenZero",
+									"nameLocation": "4465:16:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 110,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 109,
+												"mutability": "mutable",
+												"name": "_a",
+												"nameLocation": "4492:2:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 120,
+												"src": "4484:10:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 108,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "4484:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "4482:14:0"
+									},
+									"returnParameters": {
+										"id": 116,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 115,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 120,
+												"src": "4637:4:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bool",
+													"typeString": "bool"
+												},
+												"typeName": {
+													"id": 114,
+													"name": "bool",
+													"nodeType": "ElementaryTypeName",
+													"src": "4637:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bool",
+														"typeString": "bool"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "4635:8:0"
+									},
+									"scope": 121,
+									"src": "4456:224:0",
+									"stateMutability": "pure",
+									"virtual": false,
+									"visibility": "internal"
+								}
+							],
+							"scope": 122,
+							"src": "2337:2348:0",
+							"usedErrors": []
+						}
+					],
+					"src": "33:4652:0"
+				},
+				"id": 0
+			},
+			"utils/compare/Compare_Interface.sol": {
+				"ast": {
+					"absolutePath": "utils/compare/Compare_Interface.sol",
+					"exportedSymbols": {
+						"Compare": [
+							121
+						],
+						"ICompare": [
+							174
+						]
+					},
+					"id": 175,
+					"license": "MIT",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 123,
+							"literals": [
+								"solidity",
+								"^",
+								"0.8",
+								".0"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "33:23:1"
+						},
+						{
+							"absolutePath": "utils/compare/Compare.sol",
+							"file": "./Compare.sol",
+							"id": 124,
+							"nameLocation": "-1:-1:-1",
+							"nodeType": "ImportDirective",
+							"scope": 175,
+							"sourceUnit": 122,
+							"src": "60:23:1",
+							"symbolAliases": [],
+							"unitAlias": ""
+						},
+						{
+							"abstract": false,
+							"baseContracts": [],
+							"contractDependencies": [],
+							"contractKind": "interface",
+							"documentation": {
+								"id": 125,
+								"nodeType": "StructuredDocumentation",
+								"src": "87:297:1",
+								"text": " @dev Collection of functions related to compare elements.\n To use modifiers in contract function signatures, modifiers must be within an interface or contract,\n cannot be inside a library. \n \n For this you use an interface or a contract that implements them within it."
+							},
+							"fullyImplemented": true,
+							"id": 174,
+							"linearizedBaseContracts": [
+								174
+							],
+							"name": "ICompare",
+							"nameLocation": "398:8:1",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"body": {
+										"id": 141,
+										"nodeType": "Block",
+										"src": "572:75:1",
+										"statements": [
+											{
+												"expression": {
+													"arguments": [
+														{
+															"arguments": [
+																{
+																	"id": 135,
+																	"name": "_a",
+																	"nodeType": "Identifier",
+																	"overloadedDeclarations": [],
+																	"referencedDeclaration": 128,
+																	"src": "617:2:1",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_string_memory_ptr",
+																		"typeString": "string memory"
+																	}
+																},
+																{
+																	"id": 136,
+																	"name": "_b",
+																	"nodeType": "Identifier",
+																	"overloadedDeclarations": [],
+																	"referencedDeclaration": 130,
+																	"src": "621:2:1",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_string_memory_ptr",
+																		"typeString": "string memory"
+																	}
+																}
+															],
+															"expression": {
+																"argumentTypes": [
+																	{
+																		"typeIdentifier": "t_string_memory_ptr",
+																		"typeString": "string memory"
+																	},
+																	{
+																		"typeIdentifier": "t_string_memory_ptr",
+																		"typeString": "string memory"
+																	}
+																],
+																"expression": {
+																	"id": 133,
+																	"name": "Compare",
+																	"nodeType": "Identifier",
+																	"overloadedDeclarations": [],
+																	"referencedDeclaration": 121,
+																	"src": "593:7:1",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_type$_t_contract$_Compare_$121_$",
+																		"typeString": "type(library Compare)"
+																	}
+																},
+																"id": 134,
+																"isConstant": false,
+																"isLValue": false,
+																"isPure": false,
+																"lValueRequested": false,
+																"memberName": "compareStrings",
+																"nodeType": "MemberAccess",
+																"referencedDeclaration": 89,
+																"src": "593:22:1",
+																"typeDescriptions": {
+																	"typeIdentifier": "t_function_internal_pure$_t_string_memory_ptr_$_t_string_memory_ptr_$returns$_t_bool_$",
+																	"typeString": "function (string memory,string memory) pure returns (bool)"
+																}
+															},
+															"id": 137,
+															"isConstant": false,
+															"isLValue": false,
+															"isPure": false,
+															"kind": "functionCall",
+															"lValueRequested": false,
+															"names": [],
+															"nodeType": "FunctionCall",
+															"src": "593:32:1",
+															"tryCall": false,
+															"typeDescriptions": {
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															}
+														}
+													],
+													"expression": {
+														"argumentTypes": [
+															{
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															}
+														],
+														"id": 132,
+														"name": "require",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [
+															4294967278,
+															4294967278
+														],
+														"referencedDeclaration": 4294967278,
+														"src": "583:7:1",
+														"typeDescriptions": {
+															"typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+															"typeString": "function (bool) pure"
+														}
+													},
+													"id": 138,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"kind": "functionCall",
+													"lValueRequested": false,
+													"names": [],
+													"nodeType": "FunctionCall",
+													"src": "583:44:1",
+													"tryCall": false,
+													"typeDescriptions": {
+														"typeIdentifier": "t_tuple$__$",
+														"typeString": "tuple()"
+													}
+												},
+												"id": 139,
+												"nodeType": "ExpressionStatement",
+												"src": "583:44:1"
+											},
+											{
+												"id": 140,
+												"nodeType": "PlaceholderStatement",
+												"src": "638:1:1"
+											}
+										]
+									},
+									"documentation": {
+										"id": 126,
+										"nodeType": "StructuredDocumentation",
+										"src": "416:80:1",
+										"text": " @dev Check if the (string)(`_a`) is equal to (string)(`_b`)"
+									},
+									"id": 142,
+									"name": "compareStrings",
+									"nameLocation": "511:14:1",
+									"nodeType": "ModifierDefinition",
+									"parameters": {
+										"id": 131,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 128,
+												"mutability": "mutable",
+												"name": "_a",
+												"nameLocation": "542:2:1",
+												"nodeType": "VariableDeclaration",
+												"scope": 142,
+												"src": "528:16:1",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 127,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "528:6:1",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 130,
+												"mutability": "mutable",
+												"name": "_b",
+												"nameLocation": "560:2:1",
+												"nodeType": "VariableDeclaration",
+												"scope": 142,
+												"src": "546:16:1",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 129,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "546:6:1",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "526:39:1"
+									},
+									"src": "502:145:1",
+									"virtual": false,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 158,
+										"nodeType": "Block",
+										"src": "801:75:1",
+										"statements": [
+											{
+												"expression": {
+													"arguments": [
+														{
+															"arguments": [
+																{
+																	"id": 152,
+																	"name": "_a",
+																	"nodeType": "Identifier",
+																	"overloadedDeclarations": [],
+																	"referencedDeclaration": 145,
+																	"src": "846:2:1",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_uint256",
+																		"typeString": "uint256"
+																	}
+																},
+																{
+																	"id": 153,
+																	"name": "_b",
+																	"nodeType": "Identifier",
+																	"overloadedDeclarations": [],
+																	"referencedDeclaration": 147,
+																	"src": "850:2:1",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_uint256",
+																		"typeString": "uint256"
+																	}
+																}
+															],
+															"expression": {
+																"argumentTypes": [
+																	{
+																		"typeIdentifier": "t_uint256",
+																		"typeString": "uint256"
+																	},
+																	{
+																		"typeIdentifier": "t_uint256",
+																		"typeString": "uint256"
+																	}
+																],
+																"expression": {
+																	"id": 150,
+																	"name": "Compare",
+																	"nodeType": "Identifier",
+																	"overloadedDeclarations": [],
+																	"referencedDeclaration": 121,
+																	"src": "822:7:1",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_type$_t_contract$_Compare_$121_$",
+																		"typeString": "type(library Compare)"
+																	}
+																},
+																"id": 151,
+																"isConstant": false,
+																"isLValue": false,
+																"isPure": false,
+																"lValueRequested": false,
+																"memberName": "compareUint256",
+																"nodeType": "MemberAccess",
+																"referencedDeclaration": 106,
+																"src": "822:22:1",
+																"typeDescriptions": {
+																	"typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_bool_$",
+																	"typeString": "function (uint256,uint256) pure returns (bool)"
+																}
+															},
+															"id": 154,
+															"isConstant": false,
+															"isLValue": false,
+															"isPure": false,
+															"kind": "functionCall",
+															"lValueRequested": false,
+															"names": [],
+															"nodeType": "FunctionCall",
+															"src": "822:32:1",
+															"tryCall": false,
+															"typeDescriptions": {
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															}
+														}
+													],
+													"expression": {
+														"argumentTypes": [
+															{
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															}
+														],
+														"id": 149,
+														"name": "require",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [
+															4294967278,
+															4294967278
+														],
+														"referencedDeclaration": 4294967278,
+														"src": "812:7:1",
+														"typeDescriptions": {
+															"typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+															"typeString": "function (bool) pure"
+														}
+													},
+													"id": 155,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"kind": "functionCall",
+													"lValueRequested": false,
+													"names": [],
+													"nodeType": "FunctionCall",
+													"src": "812:44:1",
+													"tryCall": false,
+													"typeDescriptions": {
+														"typeIdentifier": "t_tuple$__$",
+														"typeString": "tuple()"
+													}
+												},
+												"id": 156,
+												"nodeType": "ExpressionStatement",
+												"src": "812:44:1"
+											},
+											{
+												"id": 157,
+												"nodeType": "PlaceholderStatement",
+												"src": "867:1:1"
+											}
+										]
+									},
+									"documentation": {
+										"id": 143,
+										"nodeType": "StructuredDocumentation",
+										"src": "655:82:1",
+										"text": " @dev Check if the (uint256)(`_a`) is equal to (uint256)(`_b`)"
+									},
+									"id": 159,
+									"name": "compareUint256",
+									"nameLocation": "752:14:1",
+									"nodeType": "ModifierDefinition",
+									"parameters": {
+										"id": 148,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 145,
+												"mutability": "mutable",
+												"name": "_a",
+												"nameLocation": "777:2:1",
+												"nodeType": "VariableDeclaration",
+												"scope": 159,
+												"src": "769:10:1",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 144,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "769:7:1",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 147,
+												"mutability": "mutable",
+												"name": "_b",
+												"nameLocation": "789:2:1",
+												"nodeType": "VariableDeclaration",
+												"scope": 159,
+												"src": "781:10:1",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 146,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "781:7:1",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "767:27:1"
+									},
+									"src": "743:133:1",
+									"virtual": false,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 172,
+										"nodeType": "Block",
+										"src": "1012:73:1",
+										"statements": [
+											{
+												"expression": {
+													"arguments": [
+														{
+															"arguments": [
+																{
+																	"id": 167,
+																	"name": "_a",
+																	"nodeType": "Identifier",
+																	"overloadedDeclarations": [],
+																	"referencedDeclaration": 162,
+																	"src": "1059:2:1",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_uint256",
+																		"typeString": "uint256"
+																	}
+																}
+															],
+															"expression": {
+																"argumentTypes": [
+																	{
+																		"typeIdentifier": "t_uint256",
+																		"typeString": "uint256"
+																	}
+																],
+																"expression": {
+																	"id": 165,
+																	"name": "Compare",
+																	"nodeType": "Identifier",
+																	"overloadedDeclarations": [],
+																	"referencedDeclaration": 121,
+																	"src": "1033:7:1",
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_type$_t_contract$_Compare_$121_$",
+																		"typeString": "type(library Compare)"
+																	}
+																},
+																"id": 166,
+																"isConstant": false,
+																"isLValue": false,
+																"isPure": false,
+																"lValueRequested": false,
+																"memberName": "nGreaterThenZero",
+																"nodeType": "MemberAccess",
+																"referencedDeclaration": 120,
+																"src": "1033:24:1",
+																"typeDescriptions": {
+																	"typeIdentifier": "t_function_internal_pure$_t_uint256_$returns$_t_bool_$",
+																	"typeString": "function (uint256) pure returns (bool)"
+																}
+															},
+															"id": 168,
+															"isConstant": false,
+															"isLValue": false,
+															"isPure": false,
+															"kind": "functionCall",
+															"lValueRequested": false,
+															"names": [],
+															"nodeType": "FunctionCall",
+															"src": "1033:30:1",
+															"tryCall": false,
+															"typeDescriptions": {
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															}
+														}
+													],
+													"expression": {
+														"argumentTypes": [
+															{
+																"typeIdentifier": "t_bool",
+																"typeString": "bool"
+															}
+														],
+														"id": 164,
+														"name": "require",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [
+															4294967278,
+															4294967278
+														],
+														"referencedDeclaration": 4294967278,
+														"src": "1023:7:1",
+														"typeDescriptions": {
+															"typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+															"typeString": "function (bool) pure"
+														}
+													},
+													"id": 169,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"kind": "functionCall",
+													"lValueRequested": false,
+													"names": [],
+													"nodeType": "FunctionCall",
+													"src": "1023:42:1",
+													"tryCall": false,
+													"typeDescriptions": {
+														"typeIdentifier": "t_tuple$__$",
+														"typeString": "tuple()"
+													}
+												},
+												"id": 170,
+												"nodeType": "ExpressionStatement",
+												"src": "1023:42:1"
+											},
+											{
+												"id": 171,
+												"nodeType": "PlaceholderStatement",
+												"src": "1076:1:1"
+											}
+										]
+									},
+									"documentation": {
+										"id": 160,
+										"nodeType": "StructuredDocumentation",
+										"src": "884:75:1",
+										"text": " @dev Check if the (uint256)(`_a`) is greater than zero"
+									},
+									"id": 173,
+									"name": "nGreaterThenZero",
+									"nameLocation": "974:16:1",
+									"nodeType": "ModifierDefinition",
+									"parameters": {
+										"id": 163,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 162,
+												"mutability": "mutable",
+												"name": "_a",
+												"nameLocation": "1001:2:1",
+												"nodeType": "VariableDeclaration",
+												"scope": 173,
+												"src": "993:10:1",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 161,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "993:7:1",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "991:14:1"
+									},
+									"src": "965:120:1",
+									"virtual": false,
+									"visibility": "internal"
+								}
+							],
+							"scope": 175,
+							"src": "388:700:1",
+							"usedErrors": []
+						}
+					],
+					"src": "33:1055:1"
+				},
+				"id": 1
+			}
+		}
+	}
+}

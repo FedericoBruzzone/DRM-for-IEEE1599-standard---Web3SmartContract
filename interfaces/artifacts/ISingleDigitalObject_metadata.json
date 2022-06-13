@@ -1,0 +1,400 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "getActor",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAge",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getCompany",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getDistribution",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getIeee1599",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getName",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getNumActor",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getNumCompany",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getNumSynchronization",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getPrice",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getSymbol",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getSynchronization",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getType",
+				"outputs": [
+					{
+						"internalType": "enum ISingleDigitalObject.typeT",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "_actor",
+						"type": "address[]"
+					}
+				],
+				"name": "setActor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_age",
+						"type": "uint256"
+					}
+				],
+				"name": "setAge",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "_company",
+						"type": "address[]"
+					}
+				],
+				"name": "setCompany",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "_distribution",
+						"type": "uint256[]"
+					}
+				],
+				"name": "setDistribution",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					}
+				],
+				"name": "setName",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_price",
+						"type": "uint256"
+					}
+				],
+				"name": "setPrice",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_symbol",
+						"type": "string"
+					}
+				],
+				"name": "setSymbol",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "_synchronization",
+						"type": "address[]"
+					}
+				],
+				"name": "setSynchronization",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "enum ISingleDigitalObject.typeT",
+						"name": "_type",
+						"type": "uint8"
+					}
+				],
+				"name": "setType",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Interface of the SingleDigitalObject contract",
+			"kind": "dev",
+			"methods": {
+				"getActor()": {
+					"details": "This function returns the actor of this SingleDigitalObject"
+				},
+				"getAge()": {
+					"details": "This function returns the age of this SingleDigitalObject"
+				},
+				"getCompany()": {
+					"details": "This function returns the company of this SingleDigitalObject"
+				},
+				"getDistribution()": {
+					"details": "This function returns the distribution of this SingleDigitalObject"
+				},
+				"getIeee1599()": {
+					"details": "This function returns the ieee of this SingleDigitalObject"
+				},
+				"getName()": {
+					"details": "This function returns the name of this SingleDigitalObject"
+				},
+				"getNumActor()": {
+					"details": "This function returns the number of actors of this SingleDigitalObject"
+				},
+				"getNumCompany()": {
+					"details": "This function returns the number of company of this SingleDigitalObject"
+				},
+				"getNumSynchronization()": {
+					"details": "This function returns the number of synchronization (actor) of this SingleDigitalObject"
+				},
+				"getPrice()": {
+					"details": "This function returns the price of this SingleDigitalObject"
+				},
+				"getSymbol()": {
+					"details": "This function returns the symbol of this SingleDigitalObject"
+				},
+				"getSynchronization()": {
+					"details": "This function returns the company of this SingleDigitalObject"
+				},
+				"getType()": {
+					"details": "This function returns the type of this SingleDigitalObject"
+				},
+				"setActor(address[])": {
+					"details": "This function adds the ( `_actor` ) to the actor array "
+				},
+				"setAge(uint256)": {
+					"details": "This function set the age of this SingleDigitalObject"
+				},
+				"setCompany(address[])": {
+					"details": "This function adds the ( `_company` ) to the company array "
+				},
+				"setDistribution(uint256[])": {
+					"details": "This function set the new distribution "
+				},
+				"setName(string)": {
+					"details": "This function set the name of this SingleDigitalObject"
+				},
+				"setPrice(uint256)": {
+					"details": "This function set the price of this SingleDigitalObject"
+				},
+				"setSymbol(string)": {
+					"details": "This function set the symbol of this SingleDigitalObject"
+				},
+				"setSynchronization(address[])": {
+					"details": "This function adds the ( `_synchronization` ) to the synchronization array "
+				},
+				"setType(uint8)": {
+					"details": "This function set the type of this SingleDigitalObject"
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"interfaces/SingleDigitalObject_Interface.sol": "ISingleDigitalObject"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"interfaces/SingleDigitalObject_Interface.sol": {
+			"keccak256": "0x69d00ae11407de261ebe8a6d62541f62ee67983cc13207bad40627067b03a9ea",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2f9568ebc184fd6590dba05ff3e9faf2361131a9fc43f2daa877f2e34457d144",
+				"dweb:/ipfs/QmeWpDqethdYFG2wtZc4mU8p2sHho5gdm3v3SLJA9naqnZ"
+			]
+		}
+	},
+	"version": 1
+}

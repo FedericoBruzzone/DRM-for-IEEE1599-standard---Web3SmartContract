@@ -1,0 +1,387 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "AddLicense",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "Paused",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "PriceDifference",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "Unpaused",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "getNumberOfLicense",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_license",
+						"type": "uint256"
+					}
+				],
+				"name": "getPriceOfLicense",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_license",
+						"type": "uint256"
+					}
+				],
+				"name": "isLicense",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "paused",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_newLicense",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_oldLicense",
+						"type": "uint256"
+					}
+				],
+				"name": "priceDifferenceOfLicense",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_price",
+						"type": "uint256"
+					}
+				],
+				"name": "setLicense",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_license",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_price",
+						"type": "uint256"
+					}
+				],
+				"name": "setPriceOfLicense",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"getNumberOfLicense()": {
+					"details": "This function returns the number of licenses"
+				},
+				"getPriceOfLicense(uint256)": {
+					"details": "This function returns the price of (uint256)( `_license` )"
+				},
+				"isLicense(uint256)": {
+					"details": "This function returns true if the (uint256)( `_license` ) exist"
+				},
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"paused()": {
+					"details": "Returns true if the contract is paused, and false otherwise."
+				},
+				"priceDifferenceOfLicense(uint256,uint256)": {
+					"details": "This function returns the price difference between (uint256)( `_newLicense` ) and (uint256)( `_oldLicense` )"
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner."
+				},
+				"setLicense(uint256)": {
+					"details": "This function adds to licenseToPrice map in position numberOfLicense the ( `_price` ) "
+				},
+				"setPriceOfLicense(uint256,uint256)": {
+					"details": "This function set the (uint256)( `_price` ) of (uint256)( `_license` )"
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/License.sol": "License"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/License.sol": {
+			"keccak256": "0xd0a19df04cd850ad93a54a9c1ec7bf44850dc15b4fecd03e7a7ea342eb9e1cb7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5536bea22d550be0bedaf310a1bb57ba09a5865e8a4615bc2d4e33ef56510d21",
+				"dweb:/ipfs/QmQWw8tYLfR2z9TAgw6edUWrjpmio66h9kYDC1m8o5btYL"
+			]
+		},
+		"interfaces/License_Interface.sol": {
+			"keccak256": "0xcdbe0c5618edb1e6ccb938c8a9c1f67756eff2d4fb7cf435baac82a95c193910",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4a738ec24acc40d71f95855a2e8f262d35aa8d4e8645f8fdaebbc4aa4c8f8d7c",
+				"dweb:/ipfs/QmR7ifND7ARCefxVuvm9sWykk9nqSTrNkXnJWEMnsqpAd3"
+			]
+		},
+		"security/Ownable.sol": {
+			"keccak256": "0xe458a7d53b65133946b243d83aa73bce59f5c6d87e516041e48e35c8d820ed0d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b34d35939ac55ff40fd35d0813189cccb352fe4b0c83a6e19ffc2ecb96607ed8",
+				"dweb:/ipfs/QmUerSDysorAjcEv5b2gXaSf7nxj3FGmUmpBgPwNVaQmrJ"
+			]
+		},
+		"security/Pausable.sol": {
+			"keccak256": "0x2cf95522e698185bfc6aef97d2acadab456309c066c76edf34eb2cf5efb563c8",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ec14a4e3f7c0fc1687dd61d632a191fd0de7aa732cd4899034d112acab3a3cfd",
+				"dweb:/ipfs/QmPZvSxryQwpPFzW4xHABzq88XfssKLneNX8dHTDrFijL4"
+			]
+		},
+		"utils/Context.sol": {
+			"keccak256": "0xf421acab26d86c8e2676a8f8f09ddba5c8b869b7112e905238d202618ce9dc97",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bc1300401374d5d154f1032423a7e50f9a87f9b2aa45a562ef0459aa8fd089f8",
+				"dweb:/ipfs/QmXAGmmMroVZB5HBJyBP652sMYRpw39gu2pXZ6paasAUVR"
+			]
+		},
+		"utils/array/Arrays.sol": {
+			"keccak256": "0x6b293bf87132676f753795cc9930beadf9cf89875a6b8f4b3bedce4efd9d2c50",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://38f9f05ed56bb3e0bdb6bfc92f9c496be7ec3f76f9b2905212cf395678d273c5",
+				"dweb:/ipfs/QmacBwnEKJqBijm8gPtZ9mFhUm4Nr6E55Ug6iUv5KTX8Mm"
+			]
+		},
+		"utils/array/Arrays_Interface.sol": {
+			"keccak256": "0x08c11dfe7cb1a2505b2bc5dd62d442accffb2e495cc35f46ec78ac9812a4bea0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://58a66eb9e57d8315c77d8b85dcad1838eb641094f6764ca64a8db315235d449c",
+				"dweb:/ipfs/QmdET2FrrBwgUpDLz7LLkify6BMiwcz9HgWrAy7sCRKVXG"
+			]
+		},
+		"utils/math/Math.sol": {
+			"keccak256": "0xeef5169569922d835c3494eaf80bf44c28db3906ba40b7174cc522ece94cc1b6",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1ad844b1bc1570da6c24e6b8750db204c631d22d26cedb37528059d02c4482c4",
+				"dweb:/ipfs/Qmde5KacSoD9RDCPuseT53i6qxank21uPSCzkLHDwRYZc5"
+			]
+		},
+		"utils/math/SafeMath.sol": {
+			"keccak256": "0x4ed570b2e4241532775d5b93b3b0faa63a2d5485574caf459119a4f977f4b7c1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7227eeae0775346e011ba93db2a2accaf6ef50c8c1effc81dc5317140a261ee6",
+				"dweb:/ipfs/QmWy5HLF2UWRJQLhft2DTB5eF1YHQiFYcBs5FmRnFJjPHq"
+			]
+		}
+	},
+	"version": 1
+}

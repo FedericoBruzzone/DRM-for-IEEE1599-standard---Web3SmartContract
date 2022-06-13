@@ -1,0 +1,46 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"details": "Collection of functions related to compare elements.  ABI: The Contract Application Binary Interface (ABI) is the standard way to interact with contracts in the Ethereum ecosystem,  both from outside the blockchain and for contract-to-contract interaction. Data is encoded according to its type,  as described in this specification. The encoding is not self describing and thus requires a schema in order to decode. We assume the interface functions of a contract are strongly typed, known at compilation time and static.  We assume that all contracts will have the interface definitions of any contracts they call available at compile-time.  Non-standard Packed Mode: Through abi.encodePacked(), Solidity supports a non-standard packed mode where:    - types shorter than 32 bytes are concatenated directly, without padding or sign extension    - dynamic types are encoded in-place and without the length.    - array elements are padded, but still encoded in-place More specifically: - During the encoding, everything is encoded in-place. This means that there is no distinction between head and tail,    as in the ABI encoding, and the length of an array is not encoded. - The direct arguments of abi.encodePacked are encoded without padding, as long as they are not arrays (or string or bytes). - The encoding of an array is the concatenation of the encoding of its elements with padding. - Dynamically-sized types like string, bytes or uint[] are encoded without their length field. - The encoding of string or bytes does not apply padding at the end unless it is part of an array or struct (then it is padded to a multiple of 32 bytes).  Warning: If you use keccak256(abi.encodePacked(a, b)) and both a and b are dynamic types,  it is easy to craft collisions in the hash value by moving parts of a into b and vice-versa.  More specifically, abi.encodePacked(\"a\", \"bc\") == abi.encodePacked(\"ab\", \"c\").  If you use abi.encodePacked for signatures, authentication or data integrity, make sure to always use the same types and check that at most one of them is dynamic.  Unless there is a compelling reason, abi.encode should be preferred.",
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"utils/compare/Compare.sol": "Compare"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"utils/compare/Compare.sol": {
+			"keccak256": "0xb8b223257d7a853e0a1f1d4c042592e99acc6e6f1569b02533a795637371197c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8370ee3075c944cf4d2584a246fec54ed7b051ba4b74ed09e8db3bcd0651f80d",
+				"dweb:/ipfs/QmZ5Bj3MMHrKG7dDR6YhacFcy5UFdp6wwWy4kCDzjVXb8C"
+			]
+		}
+	},
+	"version": 1
+}

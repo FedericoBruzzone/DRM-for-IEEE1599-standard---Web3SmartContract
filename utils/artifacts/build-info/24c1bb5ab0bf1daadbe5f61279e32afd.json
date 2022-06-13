@@ -1,0 +1,1685 @@
+{
+	"id": "24c1bb5ab0bf1daadbe5f61279e32afd",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.7",
+	"solcLongVersion": "0.8.7+commit.e28d00a7",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"utils/Context.sol": {
+				"content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\n/**\r\n * @dev Collection of function related to Block and Transaction Properties\r\n *\r\n * There are special variables and functions which always exist in the \r\n * global namespace and are mainly used to provide information about the blockchain or are general-use utility functions.\r\n *\r\n * The values of all members of msg, including msg.sender and msg.value can change for every external function call. This includes calls to library functions.\r\n * \r\n * When contracts are evaluated off-chain rather than in context of a transaction included in a block, you should not assume that block.* and tx.* \r\n * refer to values from any specific block or transaction. These values are provided by the EVM implementation that executes the contract and can be arbitrary.\r\n * \r\n * Do not rely on block.timestamp or blockhash as a source of randomness, unless you know what you are doing.\r\n * Both the timestamp and the block hash can be influenced by miners to some degree. Bad actors in the mining community can \r\n * for example run a casino payout function on a chosen hash and just retry a different hash if they did not receive any money.\r\n * The current block timestamp must be strictly larger than the timestamp of the last block, but the only guarantee is that it will be somewhere \r\n * between the timestamps of two consecutive blocks in the canonical chain.\r\n *\r\n * The block hashes are not available for all blocks for scalability reasons. You can only access the hashes of the most recent 256 blocks, all other values will be zero.\r\n */ \r\nabstract contract Context {\r\n\r\n    /**\r\n     * @dev Return the sender of the message (current call)\r\n     */\r\n    function _msgSender () internal view virtual \r\n                          returns ( address ) \r\n    {\r\n        return msg.sender;\r\n    }\r\n\r\n    /**\r\n     * @dev Return the number of wei sent with the message\r\n     */\r\n    function _msgValue () internal view virtual \r\n                         returns ( uint256 ) \r\n    {\r\n        return msg.value;\r\n    }\r\n\r\n    /**\r\n     * @dev Return complete calldata\r\n     */\r\n    function _msgData () internal view virtual \r\n                        returns ( bytes calldata ) \r\n    {\r\n        return msg.data;\r\n    }\r\n\r\n    /**\r\n     * @dev Return the first four bytes of the calldata (i.e. function identifier)\r\n     */\r\n    function _msgSig () internal view virtual \r\n                        returns ( bytes4 ) \r\n    {\r\n        return msg.sig;\r\n    }\r\n\r\n    /**\r\n     * @dev Return the hash of the given block when blocknumber is one of the 256 most recent blocks; otherwise returns zero\r\n     */\r\n    function _blockHash ( uint blockNumber) internal view virtual \r\n                                            returns ( bytes32 )\r\n    {\r\n        return blockhash( blockNumber );\r\n    }\r\n\r\n    /**\r\n     * @dev Return the current block’s base fee (EIP-3198 and EIP-1559)\r\n     */\r\n    function _blockBasefee () internal view virtual \r\n                              returns ( uint )\r\n    {\r\n        return block.basefee;\r\n    }\r\n\r\n    /**\r\n     * @dev Return the current chain id\r\n     */\r\n    function _blockChainid () internal view virtual \r\n                             returns ( uint )\r\n    {\r\n        return block.chainid;\r\n    }\r\n\r\n    /**\r\n     * @dev Return the current block miner’s address\r\n     */\r\n    function _blockCoinbase () internal view virtual \r\n                               returns ( address payable )\r\n    {\r\n        return block.coinbase;\r\n    }\r\n    \r\n    /**\r\n     * @dev Return the current block difficulty\r\n     */\r\n    function _blockDifficulty () internal view virtual \r\n                                 returns ( uint )\r\n    {\r\n        return block.difficulty;\r\n    }\r\n\r\n    /**\r\n     * @dev Return the current block gaslimit\r\n     */\r\n    function _blockGaslimit () internal view virtual \r\n                               returns ( uint )\r\n    {\r\n        return block.gaslimit;\r\n    }\r\n\r\n    /**\r\n     * @dev Return the current block number\r\n     */\r\n    function _blockNumber () internal view virtual \r\n                             returns ( uint )\r\n    {\r\n        return block.number;\r\n    }\r\n\r\n    /**\r\n     * @dev Return the current block timestamp as seconds since unix epoch\r\n     */\r\n    function _blockTimestamp () internal view virtual \r\n                                returns ( uint )\r\n    {\r\n        return block.timestamp;\r\n    }\r\n\r\n    /**\r\n     * @dev Return the remaining gas\r\n     */\r\n    function _gasleft () internal view virtual \r\n                        returns ( uint256 )\r\n    {\r\n        return gasleft();\r\n    }\r\n\r\n    /**\r\n     * @dev Return the  gas price of the transaction\r\n     */\r\n    function _txGasprice () internal view virtual \r\n                            returns ( uint )\r\n    {\r\n        return tx.gasprice;\r\n    }\r\n\r\n    /**\r\n     * @dev Return the sender of the transaction (full call chain)\r\n     */\r\n    function _txOrigin () internal view virtual \r\n                          returns ( address )\r\n    {\r\n        return tx.origin;\r\n    }\r\n\r\n    \r\n\r\n}\r\n"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			}
+		}
+	},
+	"output": {
+		"contracts": {
+			"utils/Context.sol": {
+				"Context": {
+					"abi": [],
+					"devdoc": {
+						"details": "Collection of function related to Block and Transaction Properties There are special variables and functions which always exist in the  global namespace and are mainly used to provide information about the blockchain or are general-use utility functions. The values of all members of msg, including msg.sender and msg.value can change for every external function call. This includes calls to library functions.  When contracts are evaluated off-chain rather than in context of a transaction included in a block, you should not assume that block.* and tx.*  refer to values from any specific block or transaction. These values are provided by the EVM implementation that executes the contract and can be arbitrary.  Do not rely on block.timestamp or blockhash as a source of randomness, unless you know what you are doing. Both the timestamp and the block hash can be influenced by miners to some degree. Bad actors in the mining community can  for example run a casino payout function on a chosen hash and just retry a different hash if they did not receive any money. The current block timestamp must be strictly larger than the timestamp of the last block, but the only guarantee is that it will be somewhere  between the timestamps of two consecutive blocks in the canonical chain. The block hashes are not available for all blocks for scalability reasons. You can only access the hashes of the most recent 256 blocks, all other values will be zero.",
+						"kind": "dev",
+						"methods": {},
+						"version": 1
+					},
+					"evm": {
+						"assembly": "",
+						"bytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"deployedBytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"immutableReferences": {},
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"gasEstimates": null,
+						"legacyAssembly": null,
+						"methodIdentifiers": {}
+					},
+					"metadata": "{\"compiler\":{\"version\":\"0.8.7+commit.e28d00a7\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"details\":\"Collection of function related to Block and Transaction Properties There are special variables and functions which always exist in the  global namespace and are mainly used to provide information about the blockchain or are general-use utility functions. The values of all members of msg, including msg.sender and msg.value can change for every external function call. This includes calls to library functions.  When contracts are evaluated off-chain rather than in context of a transaction included in a block, you should not assume that block.* and tx.*  refer to values from any specific block or transaction. These values are provided by the EVM implementation that executes the contract and can be arbitrary.  Do not rely on block.timestamp or blockhash as a source of randomness, unless you know what you are doing. Both the timestamp and the block hash can be influenced by miners to some degree. Bad actors in the mining community can  for example run a casino payout function on a chosen hash and just retry a different hash if they did not receive any money. The current block timestamp must be strictly larger than the timestamp of the last block, but the only guarantee is that it will be somewhere  between the timestamps of two consecutive blocks in the canonical chain. The block hashes are not available for all blocks for scalability reasons. You can only access the hashes of the most recent 256 blocks, all other values will be zero.\",\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"utils/Context.sol\":\"Context\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"utils/Context.sol\":{\"keccak256\":\"0xf421acab26d86c8e2676a8f8f09ddba5c8b869b7112e905238d202618ce9dc97\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bc1300401374d5d154f1032423a7e50f9a87f9b2aa45a562ef0459aa8fd089f8\",\"dweb:/ipfs/QmXAGmmMroVZB5HBJyBP652sMYRpw39gu2pXZ6paasAUVR\"]}},\"version\":1}",
+					"storageLayout": {
+						"storage": [],
+						"types": null
+					},
+					"userdoc": {
+						"kind": "user",
+						"methods": {},
+						"version": 1
+					}
+				}
+			}
+		},
+		"sources": {
+			"utils/Context.sol": {
+				"ast": {
+					"absolutePath": "utils/Context.sol",
+					"exportedSymbols": {
+						"Context": [
+							156
+						]
+					},
+					"id": 157,
+					"license": "MIT",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 1,
+							"literals": [
+								"solidity",
+								"^",
+								"0.8",
+								".0"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "33:23:0"
+						},
+						{
+							"abstract": true,
+							"baseContracts": [],
+							"contractDependencies": [],
+							"contractKind": "contract",
+							"documentation": {
+								"id": 2,
+								"nodeType": "StructuredDocumentation",
+								"src": "60:1534:0",
+								"text": " @dev Collection of function related to Block and Transaction Properties\n There are special variables and functions which always exist in the \n global namespace and are mainly used to provide information about the blockchain or are general-use utility functions.\n The values of all members of msg, including msg.sender and msg.value can change for every external function call. This includes calls to library functions.\n \n When contracts are evaluated off-chain rather than in context of a transaction included in a block, you should not assume that block.* and tx.* \n refer to values from any specific block or transaction. These values are provided by the EVM implementation that executes the contract and can be arbitrary.\n \n Do not rely on block.timestamp or blockhash as a source of randomness, unless you know what you are doing.\n Both the timestamp and the block hash can be influenced by miners to some degree. Bad actors in the mining community can \n for example run a casino payout function on a chosen hash and just retry a different hash if they did not receive any money.\n The current block timestamp must be strictly larger than the timestamp of the last block, but the only guarantee is that it will be somewhere \n between the timestamps of two consecutive blocks in the canonical chain.\n The block hashes are not available for all blocks for scalability reasons. You can only access the hashes of the most recent 256 blocks, all other values will be zero."
+							},
+							"fullyImplemented": true,
+							"id": 156,
+							"linearizedBaseContracts": [
+								156
+							],
+							"name": "Context",
+							"nameLocation": "1615:7:0",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"body": {
+										"id": 11,
+										"nodeType": "Block",
+										"src": "1810:36:0",
+										"statements": [
+											{
+												"expression": {
+													"expression": {
+														"id": 8,
+														"name": "msg",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 4294967281,
+														"src": "1828:3:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_magic_message",
+															"typeString": "msg"
+														}
+													},
+													"id": 9,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"lValueRequested": false,
+													"memberName": "sender",
+													"nodeType": "MemberAccess",
+													"src": "1828:10:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"functionReturnParameters": 7,
+												"id": 10,
+												"nodeType": "Return",
+												"src": "1821:17:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 3,
+										"nodeType": "StructuredDocumentation",
+										"src": "1632:73:0",
+										"text": " @dev Return the sender of the message (current call)"
+									},
+									"id": 12,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [],
+									"name": "_msgSender",
+									"nameLocation": "1720:10:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 4,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "1731:2:0"
+									},
+									"returnParameters": {
+										"id": 7,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 6,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 12,
+												"src": "1794:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 5,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "1794:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1792:11:0"
+									},
+									"scope": 156,
+									"src": "1711:135:0",
+									"stateMutability": "view",
+									"virtual": true,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 21,
+										"nodeType": "Block",
+										"src": "2029:35:0",
+										"statements": [
+											{
+												"expression": {
+													"expression": {
+														"id": 18,
+														"name": "msg",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 4294967281,
+														"src": "2047:3:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_magic_message",
+															"typeString": "msg"
+														}
+													},
+													"id": 19,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"lValueRequested": false,
+													"memberName": "value",
+													"nodeType": "MemberAccess",
+													"src": "2047:9:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"functionReturnParameters": 17,
+												"id": 20,
+												"nodeType": "Return",
+												"src": "2040:16:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 13,
+										"nodeType": "StructuredDocumentation",
+										"src": "1854:72:0",
+										"text": " @dev Return the number of wei sent with the message"
+									},
+									"id": 22,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [],
+									"name": "_msgValue",
+									"nameLocation": "1941:9:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 14,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "1951:2:0"
+									},
+									"returnParameters": {
+										"id": 17,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 16,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 22,
+												"src": "2013:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 15,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "2013:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2011:11:0"
+									},
+									"scope": 156,
+									"src": "1932:132:0",
+									"stateMutability": "view",
+									"virtual": true,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 31,
+										"nodeType": "Block",
+										"src": "2230:34:0",
+										"statements": [
+											{
+												"expression": {
+													"expression": {
+														"id": 28,
+														"name": "msg",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 4294967281,
+														"src": "2248:3:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_magic_message",
+															"typeString": "msg"
+														}
+													},
+													"id": 29,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"lValueRequested": false,
+													"memberName": "data",
+													"nodeType": "MemberAccess",
+													"src": "2248:8:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bytes_calldata_ptr",
+														"typeString": "bytes calldata"
+													}
+												},
+												"functionReturnParameters": 27,
+												"id": 30,
+												"nodeType": "Return",
+												"src": "2241:15:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 23,
+										"nodeType": "StructuredDocumentation",
+										"src": "2072:50:0",
+										"text": " @dev Return complete calldata"
+									},
+									"id": 32,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [],
+									"name": "_msgData",
+									"nameLocation": "2137:8:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 24,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "2146:2:0"
+									},
+									"returnParameters": {
+										"id": 27,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 26,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 32,
+												"src": "2207:14:0",
+												"stateVariable": false,
+												"storageLocation": "calldata",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bytes_calldata_ptr",
+													"typeString": "bytes"
+												},
+												"typeName": {
+													"id": 25,
+													"name": "bytes",
+													"nodeType": "ElementaryTypeName",
+													"src": "2207:5:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bytes_storage_ptr",
+														"typeString": "bytes"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2205:18:0"
+									},
+									"scope": 156,
+									"src": "2128:136:0",
+									"stateMutability": "view",
+									"virtual": true,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 41,
+										"nodeType": "Block",
+										"src": "2467:33:0",
+										"statements": [
+											{
+												"expression": {
+													"expression": {
+														"id": 38,
+														"name": "msg",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 4294967281,
+														"src": "2485:3:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_magic_message",
+															"typeString": "msg"
+														}
+													},
+													"id": 39,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"lValueRequested": false,
+													"memberName": "sig",
+													"nodeType": "MemberAccess",
+													"src": "2485:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bytes4",
+														"typeString": "bytes4"
+													}
+												},
+												"functionReturnParameters": 37,
+												"id": 40,
+												"nodeType": "Return",
+												"src": "2478:14:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 33,
+										"nodeType": "StructuredDocumentation",
+										"src": "2272:96:0",
+										"text": " @dev Return the first four bytes of the calldata (i.e. function identifier)"
+									},
+									"id": 42,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [],
+									"name": "_msgSig",
+									"nameLocation": "2383:7:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 34,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "2391:2:0"
+									},
+									"returnParameters": {
+										"id": 37,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 36,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 42,
+												"src": "2452:6:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bytes4",
+													"typeString": "bytes4"
+												},
+												"typeName": {
+													"id": 35,
+													"name": "bytes4",
+													"nodeType": "ElementaryTypeName",
+													"src": "2452:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bytes4",
+														"typeString": "bytes4"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2450:10:0"
+									},
+									"scope": 156,
+									"src": "2374:126:0",
+									"stateMutability": "view",
+									"virtual": true,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 54,
+										"nodeType": "Block",
+										"src": "2785:50:0",
+										"statements": [
+											{
+												"expression": {
+													"arguments": [
+														{
+															"id": 51,
+															"name": "blockNumber",
+															"nodeType": "Identifier",
+															"overloadedDeclarations": [],
+															"referencedDeclaration": 45,
+															"src": "2814:11:0",
+															"typeDescriptions": {
+																"typeIdentifier": "t_uint256",
+																"typeString": "uint256"
+															}
+														}
+													],
+													"expression": {
+														"argumentTypes": [
+															{
+																"typeIdentifier": "t_uint256",
+																"typeString": "uint256"
+															}
+														],
+														"id": 50,
+														"name": "blockhash",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 4294967291,
+														"src": "2803:9:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_function_blockhash_view$_t_uint256_$returns$_t_bytes32_$",
+															"typeString": "function (uint256) view returns (bytes32)"
+														}
+													},
+													"id": 52,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"kind": "functionCall",
+													"lValueRequested": false,
+													"names": [],
+													"nodeType": "FunctionCall",
+													"src": "2803:24:0",
+													"tryCall": false,
+													"typeDescriptions": {
+														"typeIdentifier": "t_bytes32",
+														"typeString": "bytes32"
+													}
+												},
+												"functionReturnParameters": 49,
+												"id": 53,
+												"nodeType": "Return",
+												"src": "2796:31:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 43,
+										"nodeType": "StructuredDocumentation",
+										"src": "2508:138:0",
+										"text": " @dev Return the hash of the given block when blocknumber is one of the 256 most recent blocks; otherwise returns zero"
+									},
+									"id": 55,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [],
+									"name": "_blockHash",
+									"nameLocation": "2661:10:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 46,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 45,
+												"mutability": "mutable",
+												"name": "blockNumber",
+												"nameLocation": "2679:11:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 55,
+												"src": "2674:16:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 44,
+													"name": "uint",
+													"nodeType": "ElementaryTypeName",
+													"src": "2674:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2672:19:0"
+									},
+									"returnParameters": {
+										"id": 49,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 48,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 55,
+												"src": "2770:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bytes32",
+													"typeString": "bytes32"
+												},
+												"typeName": {
+													"id": 47,
+													"name": "bytes32",
+													"nodeType": "ElementaryTypeName",
+													"src": "2770:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_bytes32",
+														"typeString": "bytes32"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2768:11:0"
+									},
+									"scope": 156,
+									"src": "2652:183:0",
+									"stateMutability": "view",
+									"virtual": true,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 64,
+										"nodeType": "Block",
+										"src": "3038:39:0",
+										"statements": [
+											{
+												"expression": {
+													"expression": {
+														"id": 61,
+														"name": "block",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 4294967292,
+														"src": "3056:5:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_magic_block",
+															"typeString": "block"
+														}
+													},
+													"id": 62,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"lValueRequested": false,
+													"memberName": "basefee",
+													"nodeType": "MemberAccess",
+													"src": "3056:13:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"functionReturnParameters": 60,
+												"id": 63,
+												"nodeType": "Return",
+												"src": "3049:20:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 56,
+										"nodeType": "StructuredDocumentation",
+										"src": "2843:87:0",
+										"text": " @dev Return the current block’s base fee (EIP-3198 and EIP-1559)"
+									},
+									"id": 65,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [],
+									"name": "_blockBasefee",
+									"nameLocation": "2945:13:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 57,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "2959:2:0"
+									},
+									"returnParameters": {
+										"id": 60,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 59,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 65,
+												"src": "3026:4:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 58,
+													"name": "uint",
+													"nodeType": "ElementaryTypeName",
+													"src": "3026:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3024:8:0"
+									},
+									"scope": 156,
+									"src": "2936:141:0",
+									"stateMutability": "view",
+									"virtual": true,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 74,
+										"nodeType": "Block",
+										"src": "3245:39:0",
+										"statements": [
+											{
+												"expression": {
+													"expression": {
+														"id": 71,
+														"name": "block",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 4294967292,
+														"src": "3263:5:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_magic_block",
+															"typeString": "block"
+														}
+													},
+													"id": 72,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"lValueRequested": false,
+													"memberName": "chainid",
+													"nodeType": "MemberAccess",
+													"src": "3263:13:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"functionReturnParameters": 70,
+												"id": 73,
+												"nodeType": "Return",
+												"src": "3256:20:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 66,
+										"nodeType": "StructuredDocumentation",
+										"src": "3085:53:0",
+										"text": " @dev Return the current chain id"
+									},
+									"id": 75,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [],
+									"name": "_blockChainid",
+									"nameLocation": "3153:13:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 67,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "3167:2:0"
+									},
+									"returnParameters": {
+										"id": 70,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 69,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 75,
+												"src": "3233:4:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 68,
+													"name": "uint",
+													"nodeType": "ElementaryTypeName",
+													"src": "3233:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3231:8:0"
+									},
+									"scope": 156,
+									"src": "3144:140:0",
+									"stateMutability": "view",
+									"virtual": true,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 84,
+										"nodeType": "Block",
+										"src": "3481:40:0",
+										"statements": [
+											{
+												"expression": {
+													"expression": {
+														"id": 81,
+														"name": "block",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 4294967292,
+														"src": "3499:5:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_magic_block",
+															"typeString": "block"
+														}
+													},
+													"id": 82,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"lValueRequested": false,
+													"memberName": "coinbase",
+													"nodeType": "MemberAccess",
+													"src": "3499:14:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address_payable",
+														"typeString": "address payable"
+													}
+												},
+												"functionReturnParameters": 80,
+												"id": 83,
+												"nodeType": "Return",
+												"src": "3492:21:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 76,
+										"nodeType": "StructuredDocumentation",
+										"src": "3292:68:0",
+										"text": " @dev Return the current block miner’s address"
+									},
+									"id": 85,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [],
+									"name": "_blockCoinbase",
+									"nameLocation": "3375:14:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 77,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "3390:2:0"
+									},
+									"returnParameters": {
+										"id": 80,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 79,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 85,
+												"src": "3458:15:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address_payable",
+													"typeString": "address payable"
+												},
+												"typeName": {
+													"id": 78,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "3458:15:0",
+													"stateMutability": "payable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address_payable",
+														"typeString": "address payable"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3456:19:0"
+									},
+									"scope": 156,
+									"src": "3366:155:0",
+									"stateMutability": "view",
+									"virtual": true,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 94,
+										"nodeType": "Block",
+										"src": "3708:42:0",
+										"statements": [
+											{
+												"expression": {
+													"expression": {
+														"id": 91,
+														"name": "block",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 4294967292,
+														"src": "3726:5:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_magic_block",
+															"typeString": "block"
+														}
+													},
+													"id": 92,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"lValueRequested": false,
+													"memberName": "difficulty",
+													"nodeType": "MemberAccess",
+													"src": "3726:16:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"functionReturnParameters": 90,
+												"id": 93,
+												"nodeType": "Return",
+												"src": "3719:23:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 86,
+										"nodeType": "StructuredDocumentation",
+										"src": "3533:61:0",
+										"text": " @dev Return the current block difficulty"
+									},
+									"id": 95,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [],
+									"name": "_blockDifficulty",
+									"nameLocation": "3609:16:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 87,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "3626:2:0"
+									},
+									"returnParameters": {
+										"id": 90,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 89,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 95,
+												"src": "3696:4:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 88,
+													"name": "uint",
+													"nodeType": "ElementaryTypeName",
+													"src": "3696:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3694:8:0"
+									},
+									"scope": 156,
+									"src": "3600:150:0",
+									"stateMutability": "view",
+									"virtual": true,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 104,
+										"nodeType": "Block",
+										"src": "3927:40:0",
+										"statements": [
+											{
+												"expression": {
+													"expression": {
+														"id": 101,
+														"name": "block",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 4294967292,
+														"src": "3945:5:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_magic_block",
+															"typeString": "block"
+														}
+													},
+													"id": 102,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"lValueRequested": false,
+													"memberName": "gaslimit",
+													"nodeType": "MemberAccess",
+													"src": "3945:14:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"functionReturnParameters": 100,
+												"id": 103,
+												"nodeType": "Return",
+												"src": "3938:21:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 96,
+										"nodeType": "StructuredDocumentation",
+										"src": "3758:59:0",
+										"text": " @dev Return the current block gaslimit"
+									},
+									"id": 105,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [],
+									"name": "_blockGaslimit",
+									"nameLocation": "3832:14:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 97,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "3847:2:0"
+									},
+									"returnParameters": {
+										"id": 100,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 99,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 105,
+												"src": "3915:4:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 98,
+													"name": "uint",
+													"nodeType": "ElementaryTypeName",
+													"src": "3915:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3913:8:0"
+									},
+									"scope": 156,
+									"src": "3823:144:0",
+									"stateMutability": "view",
+									"virtual": true,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 114,
+										"nodeType": "Block",
+										"src": "4138:38:0",
+										"statements": [
+											{
+												"expression": {
+													"expression": {
+														"id": 111,
+														"name": "block",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 4294967292,
+														"src": "4156:5:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_magic_block",
+															"typeString": "block"
+														}
+													},
+													"id": 112,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"lValueRequested": false,
+													"memberName": "number",
+													"nodeType": "MemberAccess",
+													"src": "4156:12:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"functionReturnParameters": 110,
+												"id": 113,
+												"nodeType": "Return",
+												"src": "4149:19:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 106,
+										"nodeType": "StructuredDocumentation",
+										"src": "3975:57:0",
+										"text": " @dev Return the current block number"
+									},
+									"id": 115,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [],
+									"name": "_blockNumber",
+									"nameLocation": "4047:12:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 107,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "4060:2:0"
+									},
+									"returnParameters": {
+										"id": 110,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 109,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 115,
+												"src": "4126:4:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 108,
+													"name": "uint",
+													"nodeType": "ElementaryTypeName",
+													"src": "4126:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "4124:8:0"
+									},
+									"scope": 156,
+									"src": "4038:138:0",
+									"stateMutability": "view",
+									"virtual": true,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 124,
+										"nodeType": "Block",
+										"src": "4384:41:0",
+										"statements": [
+											{
+												"expression": {
+													"expression": {
+														"id": 121,
+														"name": "block",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 4294967292,
+														"src": "4402:5:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_magic_block",
+															"typeString": "block"
+														}
+													},
+													"id": 122,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"lValueRequested": false,
+													"memberName": "timestamp",
+													"nodeType": "MemberAccess",
+													"src": "4402:15:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"functionReturnParameters": 120,
+												"id": 123,
+												"nodeType": "Return",
+												"src": "4395:22:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 116,
+										"nodeType": "StructuredDocumentation",
+										"src": "4184:88:0",
+										"text": " @dev Return the current block timestamp as seconds since unix epoch"
+									},
+									"id": 125,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [],
+									"name": "_blockTimestamp",
+									"nameLocation": "4287:15:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 117,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "4303:2:0"
+									},
+									"returnParameters": {
+										"id": 120,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 119,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 125,
+												"src": "4372:4:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 118,
+													"name": "uint",
+													"nodeType": "ElementaryTypeName",
+													"src": "4372:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "4370:8:0"
+									},
+									"scope": 156,
+									"src": "4278:147:0",
+									"stateMutability": "view",
+									"virtual": true,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 134,
+										"nodeType": "Block",
+										"src": "4583:35:0",
+										"statements": [
+											{
+												"expression": {
+													"arguments": [],
+													"expression": {
+														"argumentTypes": [],
+														"id": 131,
+														"name": "gasleft",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 4294967289,
+														"src": "4601:7:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_function_gasleft_view$__$returns$_t_uint256_$",
+															"typeString": "function () view returns (uint256)"
+														}
+													},
+													"id": 132,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"kind": "functionCall",
+													"lValueRequested": false,
+													"names": [],
+													"nodeType": "FunctionCall",
+													"src": "4601:9:0",
+													"tryCall": false,
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"functionReturnParameters": 130,
+												"id": 133,
+												"nodeType": "Return",
+												"src": "4594:16:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 126,
+										"nodeType": "StructuredDocumentation",
+										"src": "4433:50:0",
+										"text": " @dev Return the remaining gas"
+									},
+									"id": 135,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [],
+									"name": "_gasleft",
+									"nameLocation": "4498:8:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 127,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "4507:2:0"
+									},
+									"returnParameters": {
+										"id": 130,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 129,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 135,
+												"src": "4568:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 128,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "4568:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "4566:11:0"
+									},
+									"scope": 156,
+									"src": "4489:129:0",
+									"stateMutability": "view",
+									"virtual": true,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 144,
+										"nodeType": "Block",
+										"src": "4796:37:0",
+										"statements": [
+											{
+												"expression": {
+													"expression": {
+														"id": 141,
+														"name": "tx",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 4294967270,
+														"src": "4814:2:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_magic_transaction",
+															"typeString": "tx"
+														}
+													},
+													"id": 142,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"lValueRequested": false,
+													"memberName": "gasprice",
+													"nodeType": "MemberAccess",
+													"src": "4814:11:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"functionReturnParameters": 140,
+												"id": 143,
+												"nodeType": "Return",
+												"src": "4807:18:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 136,
+										"nodeType": "StructuredDocumentation",
+										"src": "4626:66:0",
+										"text": " @dev Return the  gas price of the transaction"
+									},
+									"id": 145,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [],
+									"name": "_txGasprice",
+									"nameLocation": "4707:11:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 137,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "4719:2:0"
+									},
+									"returnParameters": {
+										"id": 140,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 139,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 145,
+												"src": "4784:4:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 138,
+													"name": "uint",
+													"nodeType": "ElementaryTypeName",
+													"src": "4784:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "4782:8:0"
+									},
+									"scope": 156,
+									"src": "4698:135:0",
+									"stateMutability": "view",
+									"virtual": true,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 154,
+										"nodeType": "Block",
+										"src": "5024:35:0",
+										"statements": [
+											{
+												"expression": {
+													"expression": {
+														"id": 151,
+														"name": "tx",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 4294967270,
+														"src": "5042:2:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_magic_transaction",
+															"typeString": "tx"
+														}
+													},
+													"id": 152,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"lValueRequested": false,
+													"memberName": "origin",
+													"nodeType": "MemberAccess",
+													"src": "5042:9:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"functionReturnParameters": 150,
+												"id": 153,
+												"nodeType": "Return",
+												"src": "5035:16:0"
+											}
+										]
+									},
+									"documentation": {
+										"id": 146,
+										"nodeType": "StructuredDocumentation",
+										"src": "4841:80:0",
+										"text": " @dev Return the sender of the transaction (full call chain)"
+									},
+									"id": 155,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [],
+									"name": "_txOrigin",
+									"nameLocation": "4936:9:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 147,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "4946:2:0"
+									},
+									"returnParameters": {
+										"id": 150,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 149,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 155,
+												"src": "5009:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 148,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "5009:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "5007:11:0"
+									},
+									"scope": 156,
+									"src": "4927:132:0",
+									"stateMutability": "view",
+									"virtual": true,
+									"visibility": "internal"
+								}
+							],
+							"scope": 157,
+							"src": "1597:3475:0",
+							"usedErrors": []
+						}
+					],
+					"src": "33:5041:0"
+				},
+				"id": 0
+			}
+		}
+	}
+}

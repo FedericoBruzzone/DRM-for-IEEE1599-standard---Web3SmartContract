@@ -1,0 +1,388 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "who",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "contract PackageDigitalObject",
+						"name": "packageDigitalObject",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "license",
+						"type": "uint256"
+					}
+				],
+				"name": "LicenseOfPackage",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "who",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "contract PackageDigitalObject",
+						"name": "packageDigitalObject",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "contract SingleDigitalObject",
+						"name": "singleDigitalObject",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "license",
+						"type": "uint256"
+					}
+				],
+				"name": "LicenseOfSingle",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract PackageDigitalObject",
+						"name": "_packageDigitalObject",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_license",
+						"type": "uint256"
+					}
+				],
+				"name": "buyPackageDigitalObjectLicense",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract PackageDigitalObject",
+						"name": "_packageDigitalObject",
+						"type": "address"
+					},
+					{
+						"internalType": "contract SingleDigitalObject",
+						"name": "_singleDigitalObject",
+						"type": "address"
+					}
+				],
+				"name": "buySingleDigitalObject",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract PackageDigitalObject",
+						"name": "_packageDigitalObject",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_address",
+						"type": "address"
+					}
+				],
+				"name": "getPackageDigitalObjectLicenseOfAddress",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_address",
+						"type": "address"
+					}
+				],
+				"name": "getSingleDigitalObjectLicenseOfAddress",
+				"outputs": [
+					{
+						"internalType": "contract SingleDigitalObject[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract PackageDigitalObject",
+						"name": "_packageDigitalObject",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_license",
+						"type": "uint256"
+					}
+				],
+				"name": "setPackageDigitalObject",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract SingleDigitalObject",
+						"name": "_singleDigitalObject",
+						"type": "address"
+					}
+				],
+				"name": "setSingleDigitalObjectLicense",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract PackageDigitalObject",
+						"name": "_packageDigitalObject",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_license",
+						"type": "uint256"
+					}
+				],
+				"name": "upgradeLicenseOfPackage",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"events": {
+				"LicenseOfPackage(address,address,uint256)": {
+					"details": "Emitted when a new package is bought/upgrated"
+				},
+				"LicenseOfSingle(address,address,address,uint256)": {
+					"details": "Emitted when a new single is bought/upgrated"
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"buyPackageDigitalObjectLicense(address,uint256)": {
+					"details": "This function allows to buy a package with a certain license"
+				},
+				"buySingleDigitalObject(address,address)": {
+					"details": "This function allows to buy a singleDigitalObject "
+				},
+				"getPackageDigitalObjectLicenseOfAddress(address,address)": {
+					"details": "This function returns the license of ( `address` ) ( `_packageDigitalObject` )"
+				},
+				"getSingleDigitalObjectLicenseOfAddress(address)": {
+					"details": "This function returns the SingleDigitalObject of ( `address` )"
+				},
+				"setPackageDigitalObject(address,uint256)": {
+					"details": "This function set the license of ( `msg.sender` ) ( `_packageDigitalObject` )"
+				},
+				"setSingleDigitalObjectLicense(address)": {
+					"details": "This function set the SingleDigitalObject of ( `msg.sender` )"
+				},
+				"upgradeLicenseOfPackage(address,uint256)": {
+					"details": "This function allows to upgrade a package with a certain license"
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"interfaces/Management_Interface.sol": "IManagement"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/License.sol": {
+			"keccak256": "0xd24a4e816876461cd41c13954902b4ac74dfe39d964e86335533cbff4b2a9279",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9956839b306554f6756ec97d31b7ff20016e1a822a5a8a3f111f2e9e1b0d13d7",
+				"dweb:/ipfs/QmbHWv4JwvuFBjhZgQqL4wTWs9wvNCnz49SZt61Rb4TNVq"
+			]
+		},
+		"contracts/PackageDigitalObject.sol": {
+			"keccak256": "0x659266a649976a6032f08f46c729ed9312cd0cdb39ff0e999ff9fea246d77b70",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5d974a8438079b451689fdfe1ba3f6006bd828b55895e0e9bd50fe7ebe2efe3a",
+				"dweb:/ipfs/QmW8pvb7tanUA5bqd1xiL77fPzBz4KBNUGpALq779uqS5h"
+			]
+		},
+		"contracts/SingleDigitalObject.sol": {
+			"keccak256": "0x3322c6ed85b42275640bce5790e095ee597f6e85878a6f498aa1c07aeecb2175",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9220b6dda2b53ad7e7a062a58e2f35fe9d7aef5cc59cc98fdbd3564242033c1e",
+				"dweb:/ipfs/QmSidoH9eQ6wKn5G1NB7Rpjht3ot7J7aDcy8CNNnukaTtW"
+			]
+		},
+		"interfaces/License_Interface.sol": {
+			"keccak256": "0x364daaeafada79102b4c292cb0326eb0f4132c1ded43730f1d87ef4f15d8b83a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://23c3c5cf09b36c47aea8d2732b2b36e26716abf017c45955de34e71fa070813e",
+				"dweb:/ipfs/QmQNNqfXRRqqkTEKyq5Gr5pGH9HG3WTBJEfXbR2wkaGo8s"
+			]
+		},
+		"interfaces/Management_Interface.sol": {
+			"keccak256": "0x9663561fc5ecab246a2321a594f9e947ece26583e1b41112af5145b81cdce992",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://42a7588cd8bbffcdaaf922f0573d0ba7e1774d36c8bc17f443bd6441b2a96613",
+				"dweb:/ipfs/QmZWwc5c2XWybGpDMmGJ6kRRrWPYdS1YbkTXoFYxBefzEV"
+			]
+		},
+		"interfaces/PackageDigitalObject_Interface.sol": {
+			"keccak256": "0xa017a2b55ae616c8172e9c4cf1bf496aef06380aa17bd2d9865a1f16d0703487",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f863eba73d006f44f23fd5cbca61b99bbb49fef18e66eb6466850063217c22a6",
+				"dweb:/ipfs/QmRzThSpMBCzoj9FWSPgHpDQXWFCusM1R95Qc2VX7QcfZ6"
+			]
+		},
+		"interfaces/SingleDigitalObject_Interface.sol": {
+			"keccak256": "0x4a93bed6a0b823c598e8864b00977ecc6e7a3bed44d48e54ec94924730ab51a0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://58c411d3963927d6ed155c4d840ab3647da5609ab761588dbe873db903fe2ec6",
+				"dweb:/ipfs/QmWFeFw8EEyouaUJpntJJwxN6k7ZmHMojxH9wBxuuQS1Xe"
+			]
+		},
+		"security/Ownable.sol": {
+			"keccak256": "0x6badeb93603245ed20c1d967385ff29f8a6f1fc3de279a2ffd623454392e2909",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1cd1982080b8e555bd08f5f3b83ef42a1745e56c7eeffbb4237f065f122baf3a",
+				"dweb:/ipfs/QmeAyBdfRTX2HeyWJu7gzKeaf22FrJhhT36fuzk19itGcc"
+			]
+		},
+		"security/Pausable.sol": {
+			"keccak256": "0x413a15513bb3a99b126f28bb78b62a18e001375d0e36c487c11309087217b5c2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ece65ff3edca7cadf55b7b8a3044605eddcb114b435a2ba7dc3d7a9bed2b14da",
+				"dweb:/ipfs/QmXuwv73v4DqhG9Fd4E4eWB3Q5LPPaXKemEdEjRHvXxKyJ"
+			]
+		},
+		"utils/Context.sol": {
+			"keccak256": "0x4d2117814bf5f7dee8b567a1c06141b6de2fa86fbeb4e9375ba0320582be33bc",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://313fd50214c50987e29b416c743361ec8d2b950da66b99312b94b20789eab513",
+				"dweb:/ipfs/QmYx4gVVcisQBe5GW7icoVdVGFoG2KDzeKfcdJodhbP6xy"
+			]
+		},
+		"utils/array/Arrays.sol": {
+			"keccak256": "0x28ef24c8c44cebece09d69fed73a0f200ecfa629ea4e69287bbee9799e9acd64",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f5d1d9884a6a27672c083427f9d6512fbc4baec821db3367c333602798cfa29d",
+				"dweb:/ipfs/QmQgPTaUYzo9MLoVsqy2B46GZonLeRCCrpEtTJtkJ3pMP2"
+			]
+		},
+		"utils/array/Arrays_Interface.sol": {
+			"keccak256": "0xe812f2094fd152fc07be17d58145e02c95bec4a501fda366805a6d15915bff6c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://53543eb276ff373e3d3577ec44556d9a2c226b7be041d3d2e3749e9b6e4c91b5",
+				"dweb:/ipfs/QmRHqnRUKjz9zMBmnMxXcUYqcPSwZcxPPTns1VHWA97Wxu"
+			]
+		},
+		"utils/compare/Compare.sol": {
+			"keccak256": "0x6e99dd08900d38a37fb13e4511b91c6b2b1f5baed17516ef1560dc2a282662ce",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://661873191b284b3ae20f70b3ab01a9bc0642a42be33d05b787a9f7e691ca6618",
+				"dweb:/ipfs/QmVDWDkeqR52QbBRAS6bWeurdZ2RqTN8hLDVUE2q8zYBRa"
+			]
+		},
+		"utils/compare/Compare_Interface.sol": {
+			"keccak256": "0x19eb0d01661f0b6f2c01c96e17009b1d85bbbb7f275884b7a70ebf472fea03ab",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f756b647aa58bcb24cf373f423d9e05e0f8d684e4c87ffc06c2a34eeefddad86",
+				"dweb:/ipfs/QmaKwRTZbfFVCx9UzHoujRuCEzs16gT3YUG9t2uDUXxoN3"
+			]
+		},
+		"utils/math/Math.sol": {
+			"keccak256": "0xace887fc1438c755082ff17f6be391f4317a4eefa0c43bd991da5cfcce8f9506",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4806d5b3d43c140f940e27719341526689a83c02e1b648ca7907c8bc9e89ff74",
+				"dweb:/ipfs/QmSHqR1q6psmCvNp9jdC3mqbeB57zcxydmCALaimZ7tRFJ"
+			]
+		},
+		"utils/math/PlusMath.sol": {
+			"keccak256": "0xb11519ca374d3195a90ab6debd9e7b674df991e661cfc7df951deb7d2a362cac",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://200e00aa4997e2f6e0fc7ae39058c84ecb8503a5af6bf4bb7f9aca428e5ff100",
+				"dweb:/ipfs/QmP2JRNAPodHgo6KL8FckrVtT5tNjEUtTnvvuukTFgJ1RD"
+			]
+		},
+		"utils/math/SafeMath.sol": {
+			"keccak256": "0x34cd5da47f8d3e7b0d2e55c2ab7ebc69dbc9f4732342912aa848a1b8ac0a9593",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://64e1ad21a3106968769bdb68f6e83fd31690863c833f4293275dd320b2f1d410",
+				"dweb:/ipfs/QmYTAWWV67LaRyckRiYUCdGEGj2ts12MLw9BNejyEwqVsP"
+			]
+		}
+	},
+	"version": 1
+}

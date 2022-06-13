@@ -1,0 +1,1986 @@
+{
+	"id": "be1fd7c0b5414a0e971126c897aa929f",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.7",
+	"solcLongVersion": "0.8.7+commit.e28d00a7",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"interfaces/SingleDigitalObject_Interface.sol": {
+				"content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\n/**\r\n * @dev Interface of the SingleDigitalObject contract\r\n */\r\n\r\ninterface ISingleDigitalObject \r\n{\r\n    \r\n    enum typeT { \r\n                AUDIO, // 0\r\n                SCORE, // 1\r\n                VIDEO  // 2\r\n            }\r\n    \r\n\r\n    /** \r\n     * @dev This function returns the name of this SingleDigitalObject\r\n     */\r\n    function getName ( ) external view returns ( string memory );\r\n\r\n    /** \r\n     * @dev This function returns the symbol of this SingleDigitalObject\r\n     */\r\n    function getSymbol ( ) external view returns ( string memory );\r\n\r\n    /** \r\n     * @dev This function returns the age of this SingleDigitalObject\r\n     */\r\n    function getAge ( ) external view returns ( uint256 );\r\n    \r\n    /** \r\n     * @dev This function returns the type of this SingleDigitalObject\r\n     */\r\n    function getType ( ) external view returns ( typeT );\r\n\r\n    /** \r\n     * @dev This function returns the price of this SingleDigitalObject\r\n     */\r\n    function getPrice ( ) external view returns ( uint256 );\r\n    \r\n    /** \r\n     * @dev This function returns the ieee of this SingleDigitalObject\r\n     */\r\n    function getIeee1599 ( ) external view returns ( address );\r\n\r\n    /** \r\n     * @dev This function returns the actor of this SingleDigitalObject\r\n     */\r\n    function getActor ( ) external view returns ( address[] memory );\r\n\r\n    /** \r\n     * @dev This function returns the company of this SingleDigitalObject\r\n     */\r\n    function getCompany ( ) external view returns ( address[] memory );\r\n\r\n    /** \r\n     * @dev This function returns the company of this SingleDigitalObject\r\n     */\r\n    function getSynchronization ( ) external view returns ( address[] memory );\r\n\r\n    /** \r\n     * @dev This function returns the number of actors of this SingleDigitalObject\r\n     */\r\n    function getNumActor ( ) external view returns ( uint256 );\r\n\r\n    /** \r\n     * @dev This function returns the number of company of this SingleDigitalObject\r\n     */\r\n    function getNumCompany ( ) external view returns ( uint256 );\r\n\r\n    /** \r\n     * @dev This function returns the number of synchronization (actor) of this SingleDigitalObject\r\n     */\r\n    function getNumSynchronization ( ) external view returns ( uint256 );\r\n   \r\n    /** \r\n     * @dev This function returns the distribution of this SingleDigitalObject\r\n     */\r\n    function getDistribution (  ) external view returns ( uint256[] memory );\r\n\r\n    /** \r\n     * @dev This function set the name of this SingleDigitalObject\r\n     */\r\n    function setName ( string memory _name ) external;\r\n\r\n    /** \r\n     * @dev This function set the symbol of this SingleDigitalObject\r\n     */\r\n    function setSymbol ( string memory _symbol ) external;\r\n\r\n    /** \r\n     * @dev This function set the age of this SingleDigitalObject\r\n     */\r\n    function setAge ( uint256 _age ) external;\r\n\r\n    /** \r\n     * @dev This function set the type of this SingleDigitalObject\r\n     */\r\n    function setType ( typeT _type ) external;\r\n\r\n    /** \r\n     * @dev This function set the price of this SingleDigitalObject\r\n     */\r\n    function setPrice ( uint256 _price ) external;\r\n    \r\n    //====================================================================================================================================\r\n\r\n    /** \r\n     * @dev This function adds the ( `_actor` ) to the actor array \r\n     */\r\n    function setActor ( address[] memory _actor ) external;\r\n    \r\n    //====================================================================================================================================\r\n\r\n    /** \r\n     * @dev This function adds the ( `_company` ) to the company array \r\n     */\r\n    function setCompany ( address[] memory _company ) external;\r\n    \r\n    //====================================================================================================================================\r\n\r\n    /** \r\n     * @dev This function adds the ( `_synchronization` ) to the synchronization array \r\n     */\r\n    function setSynchronization ( address[] memory _synchronization ) external;\r\n    \r\n    //====================================================================================================================================\r\n\r\n    /** \r\n     * @dev This function set the new distribution \r\n     */\r\n    function setDistribution ( uint256[] memory _distribution ) external;\r\n    \r\n\r\n    \r\n}"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			}
+		}
+	},
+	"output": {
+		"contracts": {
+			"interfaces/SingleDigitalObject_Interface.sol": {
+				"ISingleDigitalObject": {
+					"abi": [
+						{
+							"inputs": [],
+							"name": "getActor",
+							"outputs": [
+								{
+									"internalType": "address[]",
+									"name": "",
+									"type": "address[]"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"name": "getAge",
+							"outputs": [
+								{
+									"internalType": "uint256",
+									"name": "",
+									"type": "uint256"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"name": "getCompany",
+							"outputs": [
+								{
+									"internalType": "address[]",
+									"name": "",
+									"type": "address[]"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"name": "getDistribution",
+							"outputs": [
+								{
+									"internalType": "uint256[]",
+									"name": "",
+									"type": "uint256[]"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"name": "getIeee1599",
+							"outputs": [
+								{
+									"internalType": "address",
+									"name": "",
+									"type": "address"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"name": "getName",
+							"outputs": [
+								{
+									"internalType": "string",
+									"name": "",
+									"type": "string"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"name": "getNumActor",
+							"outputs": [
+								{
+									"internalType": "uint256",
+									"name": "",
+									"type": "uint256"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"name": "getNumCompany",
+							"outputs": [
+								{
+									"internalType": "uint256",
+									"name": "",
+									"type": "uint256"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"name": "getNumSynchronization",
+							"outputs": [
+								{
+									"internalType": "uint256",
+									"name": "",
+									"type": "uint256"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"name": "getPrice",
+							"outputs": [
+								{
+									"internalType": "uint256",
+									"name": "",
+									"type": "uint256"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"name": "getSymbol",
+							"outputs": [
+								{
+									"internalType": "string",
+									"name": "",
+									"type": "string"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"name": "getSynchronization",
+							"outputs": [
+								{
+									"internalType": "address[]",
+									"name": "",
+									"type": "address[]"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"name": "getType",
+							"outputs": [
+								{
+									"internalType": "enum ISingleDigitalObject.typeT",
+									"name": "",
+									"type": "uint8"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "address[]",
+									"name": "_actor",
+									"type": "address[]"
+								}
+							],
+							"name": "setActor",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "uint256",
+									"name": "_age",
+									"type": "uint256"
+								}
+							],
+							"name": "setAge",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "address[]",
+									"name": "_company",
+									"type": "address[]"
+								}
+							],
+							"name": "setCompany",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "uint256[]",
+									"name": "_distribution",
+									"type": "uint256[]"
+								}
+							],
+							"name": "setDistribution",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "string",
+									"name": "_name",
+									"type": "string"
+								}
+							],
+							"name": "setName",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "uint256",
+									"name": "_price",
+									"type": "uint256"
+								}
+							],
+							"name": "setPrice",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "string",
+									"name": "_symbol",
+									"type": "string"
+								}
+							],
+							"name": "setSymbol",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "address[]",
+									"name": "_synchronization",
+									"type": "address[]"
+								}
+							],
+							"name": "setSynchronization",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "enum ISingleDigitalObject.typeT",
+									"name": "_type",
+									"type": "uint8"
+								}
+							],
+							"name": "setType",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						}
+					],
+					"devdoc": {
+						"details": "Interface of the SingleDigitalObject contract",
+						"kind": "dev",
+						"methods": {
+							"getActor()": {
+								"details": "This function returns the actor of this SingleDigitalObject"
+							},
+							"getAge()": {
+								"details": "This function returns the age of this SingleDigitalObject"
+							},
+							"getCompany()": {
+								"details": "This function returns the company of this SingleDigitalObject"
+							},
+							"getDistribution()": {
+								"details": "This function returns the distribution of this SingleDigitalObject"
+							},
+							"getIeee1599()": {
+								"details": "This function returns the ieee of this SingleDigitalObject"
+							},
+							"getName()": {
+								"details": "This function returns the name of this SingleDigitalObject"
+							},
+							"getNumActor()": {
+								"details": "This function returns the number of actors of this SingleDigitalObject"
+							},
+							"getNumCompany()": {
+								"details": "This function returns the number of company of this SingleDigitalObject"
+							},
+							"getNumSynchronization()": {
+								"details": "This function returns the number of synchronization (actor) of this SingleDigitalObject"
+							},
+							"getPrice()": {
+								"details": "This function returns the price of this SingleDigitalObject"
+							},
+							"getSymbol()": {
+								"details": "This function returns the symbol of this SingleDigitalObject"
+							},
+							"getSynchronization()": {
+								"details": "This function returns the company of this SingleDigitalObject"
+							},
+							"getType()": {
+								"details": "This function returns the type of this SingleDigitalObject"
+							},
+							"setActor(address[])": {
+								"details": "This function adds the ( `_actor` ) to the actor array "
+							},
+							"setAge(uint256)": {
+								"details": "This function set the age of this SingleDigitalObject"
+							},
+							"setCompany(address[])": {
+								"details": "This function adds the ( `_company` ) to the company array "
+							},
+							"setDistribution(uint256[])": {
+								"details": "This function set the new distribution "
+							},
+							"setName(string)": {
+								"details": "This function set the name of this SingleDigitalObject"
+							},
+							"setPrice(uint256)": {
+								"details": "This function set the price of this SingleDigitalObject"
+							},
+							"setSymbol(string)": {
+								"details": "This function set the symbol of this SingleDigitalObject"
+							},
+							"setSynchronization(address[])": {
+								"details": "This function adds the ( `_synchronization` ) to the synchronization array "
+							},
+							"setType(uint8)": {
+								"details": "This function set the type of this SingleDigitalObject"
+							}
+						},
+						"version": 1
+					},
+					"evm": {
+						"assembly": "",
+						"bytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"deployedBytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"immutableReferences": {},
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"gasEstimates": null,
+						"legacyAssembly": null,
+						"methodIdentifiers": {
+							"getActor()": "c250a9aa",
+							"getAge()": "967e6e65",
+							"getCompany()": "127810bc",
+							"getDistribution()": "1cced51b",
+							"getIeee1599()": "14b21322",
+							"getName()": "17d7de7c",
+							"getNumActor()": "8f59e34f",
+							"getNumCompany()": "5dca654f",
+							"getNumSynchronization()": "0b9d3f32",
+							"getPrice()": "98d5fdca",
+							"getSymbol()": "15070401",
+							"getSynchronization()": "d9e71c02",
+							"getType()": "15dae03e",
+							"setActor(address[])": "5fcd689e",
+							"setAge(uint256)": "d5dcf127",
+							"setCompany(address[])": "667de587",
+							"setDistribution(uint256[])": "4956f4eb",
+							"setName(string)": "c47f0027",
+							"setPrice(uint256)": "91b7f5ed",
+							"setSymbol(string)": "b84c8246",
+							"setSynchronization(address[])": "a34d8460",
+							"setType(uint8)": "0b54cbfb"
+						}
+					},
+					"metadata": "{\"compiler\":{\"version\":\"0.8.7+commit.e28d00a7\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getActor\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAge\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCompany\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getDistribution\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getIeee1599\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getName\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getNumActor\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getNumCompany\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getNumSynchronization\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getSymbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getSynchronization\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getType\",\"outputs\":[{\"internalType\":\"enum ISingleDigitalObject.typeT\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"_actor\",\"type\":\"address[]\"}],\"name\":\"setActor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_age\",\"type\":\"uint256\"}],\"name\":\"setAge\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"_company\",\"type\":\"address[]\"}],\"name\":\"setCompany\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"_distribution\",\"type\":\"uint256[]\"}],\"name\":\"setDistribution\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"}],\"name\":\"setName\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"}],\"name\":\"setPrice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_symbol\",\"type\":\"string\"}],\"name\":\"setSymbol\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"_synchronization\",\"type\":\"address[]\"}],\"name\":\"setSynchronization\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"enum ISingleDigitalObject.typeT\",\"name\":\"_type\",\"type\":\"uint8\"}],\"name\":\"setType\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Interface of the SingleDigitalObject contract\",\"kind\":\"dev\",\"methods\":{\"getActor()\":{\"details\":\"This function returns the actor of this SingleDigitalObject\"},\"getAge()\":{\"details\":\"This function returns the age of this SingleDigitalObject\"},\"getCompany()\":{\"details\":\"This function returns the company of this SingleDigitalObject\"},\"getDistribution()\":{\"details\":\"This function returns the distribution of this SingleDigitalObject\"},\"getIeee1599()\":{\"details\":\"This function returns the ieee of this SingleDigitalObject\"},\"getName()\":{\"details\":\"This function returns the name of this SingleDigitalObject\"},\"getNumActor()\":{\"details\":\"This function returns the number of actors of this SingleDigitalObject\"},\"getNumCompany()\":{\"details\":\"This function returns the number of company of this SingleDigitalObject\"},\"getNumSynchronization()\":{\"details\":\"This function returns the number of synchronization (actor) of this SingleDigitalObject\"},\"getPrice()\":{\"details\":\"This function returns the price of this SingleDigitalObject\"},\"getSymbol()\":{\"details\":\"This function returns the symbol of this SingleDigitalObject\"},\"getSynchronization()\":{\"details\":\"This function returns the company of this SingleDigitalObject\"},\"getType()\":{\"details\":\"This function returns the type of this SingleDigitalObject\"},\"setActor(address[])\":{\"details\":\"This function adds the ( `_actor` ) to the actor array \"},\"setAge(uint256)\":{\"details\":\"This function set the age of this SingleDigitalObject\"},\"setCompany(address[])\":{\"details\":\"This function adds the ( `_company` ) to the company array \"},\"setDistribution(uint256[])\":{\"details\":\"This function set the new distribution \"},\"setName(string)\":{\"details\":\"This function set the name of this SingleDigitalObject\"},\"setPrice(uint256)\":{\"details\":\"This function set the price of this SingleDigitalObject\"},\"setSymbol(string)\":{\"details\":\"This function set the symbol of this SingleDigitalObject\"},\"setSynchronization(address[])\":{\"details\":\"This function adds the ( `_synchronization` ) to the synchronization array \"},\"setType(uint8)\":{\"details\":\"This function set the type of this SingleDigitalObject\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"interfaces/SingleDigitalObject_Interface.sol\":\"ISingleDigitalObject\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"interfaces/SingleDigitalObject_Interface.sol\":{\"keccak256\":\"0xdeca552eda37dff40b1e38e3ec15b1c60e1c634e31bba84f46e3f4f42151d46f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://21d4b612cd3c5105ab0d0c2f470c501b07ff35ccc3fd10a7da85ccca8cad1ca3\",\"dweb:/ipfs/QmSegbBNxaYXNbx8isk6cZ4xfheoMwmyuXN9qtCCU91t4t\"]}},\"version\":1}",
+					"storageLayout": {
+						"storage": [],
+						"types": null
+					},
+					"userdoc": {
+						"kind": "user",
+						"methods": {},
+						"version": 1
+					}
+				}
+			}
+		},
+		"sources": {
+			"interfaces/SingleDigitalObject_Interface.sol": {
+				"ast": {
+					"absolutePath": "interfaces/SingleDigitalObject_Interface.sol",
+					"exportedSymbols": {
+						"ISingleDigitalObject": [
+							149
+						]
+					},
+					"id": 150,
+					"license": "MIT",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 1,
+							"literals": [
+								"solidity",
+								"^",
+								"0.8",
+								".0"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "33:23:0"
+						},
+						{
+							"abstract": false,
+							"baseContracts": [],
+							"contractDependencies": [],
+							"contractKind": "interface",
+							"documentation": {
+								"id": 2,
+								"nodeType": "StructuredDocumentation",
+								"src": "60:63:0",
+								"text": " @dev Interface of the SingleDigitalObject contract"
+							},
+							"fullyImplemented": false,
+							"id": 149,
+							"linearizedBaseContracts": [
+								149
+							],
+							"name": "ISingleDigitalObject",
+							"nameLocation": "137:20:0",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"canonicalName": "ISingleDigitalObject.typeT",
+									"id": 6,
+									"members": [
+										{
+											"id": 3,
+											"name": "AUDIO",
+											"nameLocation": "204:5:0",
+											"nodeType": "EnumValue",
+											"src": "204:5:0"
+										},
+										{
+											"id": 4,
+											"name": "SCORE",
+											"nameLocation": "233:5:0",
+											"nodeType": "EnumValue",
+											"src": "233:5:0"
+										},
+										{
+											"id": 5,
+											"name": "VIDEO",
+											"nameLocation": "262:5:0",
+											"nodeType": "EnumValue",
+											"src": "262:5:0"
+										}
+									],
+									"name": "typeT",
+									"nameLocation": "178:5:0",
+									"nodeType": "EnumDefinition",
+									"src": "173:115:0"
+								},
+								{
+									"documentation": {
+										"id": 7,
+										"nodeType": "StructuredDocumentation",
+										"src": "302:85:0",
+										"text": " @dev This function returns the name of this SingleDigitalObject"
+									},
+									"functionSelector": "17d7de7c",
+									"id": 12,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getName",
+									"nameLocation": "402:7:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 8,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "410:3:0"
+									},
+									"returnParameters": {
+										"id": 11,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 10,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 12,
+												"src": "438:13:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 9,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "438:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "436:17:0"
+									},
+									"scope": 149,
+									"src": "393:61:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 13,
+										"nodeType": "StructuredDocumentation",
+										"src": "462:87:0",
+										"text": " @dev This function returns the symbol of this SingleDigitalObject"
+									},
+									"functionSelector": "15070401",
+									"id": 18,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getSymbol",
+									"nameLocation": "564:9:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 14,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "574:3:0"
+									},
+									"returnParameters": {
+										"id": 17,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 16,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 18,
+												"src": "602:13:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 15,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "602:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "600:17:0"
+									},
+									"scope": 149,
+									"src": "555:63:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 19,
+										"nodeType": "StructuredDocumentation",
+										"src": "626:84:0",
+										"text": " @dev This function returns the age of this SingleDigitalObject"
+									},
+									"functionSelector": "967e6e65",
+									"id": 24,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getAge",
+									"nameLocation": "725:6:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 20,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "732:3:0"
+									},
+									"returnParameters": {
+										"id": 23,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 22,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 24,
+												"src": "760:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 21,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "760:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "758:11:0"
+									},
+									"scope": 149,
+									"src": "716:54:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 25,
+										"nodeType": "StructuredDocumentation",
+										"src": "782:85:0",
+										"text": " @dev This function returns the type of this SingleDigitalObject"
+									},
+									"functionSelector": "15dae03e",
+									"id": 31,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getType",
+									"nameLocation": "882:7:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 26,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "890:3:0"
+									},
+									"returnParameters": {
+										"id": 30,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 29,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 31,
+												"src": "918:5:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_enum$_typeT_$6",
+													"typeString": "enum ISingleDigitalObject.typeT"
+												},
+												"typeName": {
+													"id": 28,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 27,
+														"name": "typeT",
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 6,
+														"src": "918:5:0"
+													},
+													"referencedDeclaration": 6,
+													"src": "918:5:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_enum$_typeT_$6",
+														"typeString": "enum ISingleDigitalObject.typeT"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "916:9:0"
+									},
+									"scope": 149,
+									"src": "873:53:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 32,
+										"nodeType": "StructuredDocumentation",
+										"src": "934:86:0",
+										"text": " @dev This function returns the price of this SingleDigitalObject"
+									},
+									"functionSelector": "98d5fdca",
+									"id": 37,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getPrice",
+									"nameLocation": "1035:8:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 33,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "1044:3:0"
+									},
+									"returnParameters": {
+										"id": 36,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 35,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 37,
+												"src": "1072:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 34,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "1072:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1070:11:0"
+									},
+									"scope": 149,
+									"src": "1026:56:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 38,
+										"nodeType": "StructuredDocumentation",
+										"src": "1094:85:0",
+										"text": " @dev This function returns the ieee of this SingleDigitalObject"
+									},
+									"functionSelector": "14b21322",
+									"id": 43,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getIeee1599",
+									"nameLocation": "1194:11:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 39,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "1206:3:0"
+									},
+									"returnParameters": {
+										"id": 42,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 41,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 43,
+												"src": "1234:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 40,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "1234:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1232:11:0"
+									},
+									"scope": 149,
+									"src": "1185:59:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 44,
+										"nodeType": "StructuredDocumentation",
+										"src": "1252:86:0",
+										"text": " @dev This function returns the actor of this SingleDigitalObject"
+									},
+									"functionSelector": "c250a9aa",
+									"id": 50,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getActor",
+									"nameLocation": "1353:8:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 45,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "1362:3:0"
+									},
+									"returnParameters": {
+										"id": 49,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 48,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 50,
+												"src": "1390:16:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+													"typeString": "address[]"
+												},
+												"typeName": {
+													"baseType": {
+														"id": 46,
+														"name": "address",
+														"nodeType": "ElementaryTypeName",
+														"src": "1390:7:0",
+														"stateMutability": "nonpayable",
+														"typeDescriptions": {
+															"typeIdentifier": "t_address",
+															"typeString": "address"
+														}
+													},
+													"id": 47,
+													"nodeType": "ArrayTypeName",
+													"src": "1390:9:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+														"typeString": "address[]"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1388:20:0"
+									},
+									"scope": 149,
+									"src": "1344:65:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 51,
+										"nodeType": "StructuredDocumentation",
+										"src": "1417:88:0",
+										"text": " @dev This function returns the company of this SingleDigitalObject"
+									},
+									"functionSelector": "127810bc",
+									"id": 57,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getCompany",
+									"nameLocation": "1520:10:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 52,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "1531:3:0"
+									},
+									"returnParameters": {
+										"id": 56,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 55,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 57,
+												"src": "1559:16:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+													"typeString": "address[]"
+												},
+												"typeName": {
+													"baseType": {
+														"id": 53,
+														"name": "address",
+														"nodeType": "ElementaryTypeName",
+														"src": "1559:7:0",
+														"stateMutability": "nonpayable",
+														"typeDescriptions": {
+															"typeIdentifier": "t_address",
+															"typeString": "address"
+														}
+													},
+													"id": 54,
+													"nodeType": "ArrayTypeName",
+													"src": "1559:9:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+														"typeString": "address[]"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1557:20:0"
+									},
+									"scope": 149,
+									"src": "1511:67:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 58,
+										"nodeType": "StructuredDocumentation",
+										"src": "1586:88:0",
+										"text": " @dev This function returns the company of this SingleDigitalObject"
+									},
+									"functionSelector": "d9e71c02",
+									"id": 64,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getSynchronization",
+									"nameLocation": "1689:18:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 59,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "1708:3:0"
+									},
+									"returnParameters": {
+										"id": 63,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 62,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 64,
+												"src": "1736:16:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+													"typeString": "address[]"
+												},
+												"typeName": {
+													"baseType": {
+														"id": 60,
+														"name": "address",
+														"nodeType": "ElementaryTypeName",
+														"src": "1736:7:0",
+														"stateMutability": "nonpayable",
+														"typeDescriptions": {
+															"typeIdentifier": "t_address",
+															"typeString": "address"
+														}
+													},
+													"id": 61,
+													"nodeType": "ArrayTypeName",
+													"src": "1736:9:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+														"typeString": "address[]"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1734:20:0"
+									},
+									"scope": 149,
+									"src": "1680:75:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 65,
+										"nodeType": "StructuredDocumentation",
+										"src": "1763:97:0",
+										"text": " @dev This function returns the number of actors of this SingleDigitalObject"
+									},
+									"functionSelector": "8f59e34f",
+									"id": 70,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getNumActor",
+									"nameLocation": "1875:11:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 66,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "1887:3:0"
+									},
+									"returnParameters": {
+										"id": 69,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 68,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 70,
+												"src": "1915:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 67,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "1915:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1913:11:0"
+									},
+									"scope": 149,
+									"src": "1866:59:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 71,
+										"nodeType": "StructuredDocumentation",
+										"src": "1933:98:0",
+										"text": " @dev This function returns the number of company of this SingleDigitalObject"
+									},
+									"functionSelector": "5dca654f",
+									"id": 76,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getNumCompany",
+									"nameLocation": "2046:13:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 72,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "2060:3:0"
+									},
+									"returnParameters": {
+										"id": 75,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 74,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 76,
+												"src": "2088:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 73,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "2088:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2086:11:0"
+									},
+									"scope": 149,
+									"src": "2037:61:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 77,
+										"nodeType": "StructuredDocumentation",
+										"src": "2106:114:0",
+										"text": " @dev This function returns the number of synchronization (actor) of this SingleDigitalObject"
+									},
+									"functionSelector": "0b9d3f32",
+									"id": 82,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getNumSynchronization",
+									"nameLocation": "2235:21:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 78,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "2257:3:0"
+									},
+									"returnParameters": {
+										"id": 81,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 80,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 82,
+												"src": "2285:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 79,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "2285:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2283:11:0"
+									},
+									"scope": 149,
+									"src": "2226:69:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 83,
+										"nodeType": "StructuredDocumentation",
+										"src": "2306:93:0",
+										"text": " @dev This function returns the distribution of this SingleDigitalObject"
+									},
+									"functionSelector": "1cced51b",
+									"id": 89,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getDistribution",
+									"nameLocation": "2414:15:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 84,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "2430:4:0"
+									},
+									"returnParameters": {
+										"id": 88,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 87,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 89,
+												"src": "2459:16:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+													"typeString": "uint256[]"
+												},
+												"typeName": {
+													"baseType": {
+														"id": 85,
+														"name": "uint256",
+														"nodeType": "ElementaryTypeName",
+														"src": "2459:7:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_uint256",
+															"typeString": "uint256"
+														}
+													},
+													"id": 86,
+													"nodeType": "ArrayTypeName",
+													"src": "2459:9:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+														"typeString": "uint256[]"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2457:20:0"
+									},
+									"scope": 149,
+									"src": "2405:73:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 90,
+										"nodeType": "StructuredDocumentation",
+										"src": "2486:81:0",
+										"text": " @dev This function set the name of this SingleDigitalObject"
+									},
+									"functionSelector": "c47f0027",
+									"id": 95,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "setName",
+									"nameLocation": "2582:7:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 93,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 92,
+												"mutability": "mutable",
+												"name": "_name",
+												"nameLocation": "2606:5:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 95,
+												"src": "2592:19:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 91,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "2592:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2590:23:0"
+									},
+									"returnParameters": {
+										"id": 94,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "2622:0:0"
+									},
+									"scope": 149,
+									"src": "2573:50:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 96,
+										"nodeType": "StructuredDocumentation",
+										"src": "2631:83:0",
+										"text": " @dev This function set the symbol of this SingleDigitalObject"
+									},
+									"functionSelector": "b84c8246",
+									"id": 101,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "setSymbol",
+									"nameLocation": "2729:9:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 99,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 98,
+												"mutability": "mutable",
+												"name": "_symbol",
+												"nameLocation": "2755:7:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 101,
+												"src": "2741:21:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 97,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "2741:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2739:25:0"
+									},
+									"returnParameters": {
+										"id": 100,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "2773:0:0"
+									},
+									"scope": 149,
+									"src": "2720:54:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 102,
+										"nodeType": "StructuredDocumentation",
+										"src": "2782:80:0",
+										"text": " @dev This function set the age of this SingleDigitalObject"
+									},
+									"functionSelector": "d5dcf127",
+									"id": 107,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "setAge",
+									"nameLocation": "2877:6:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 105,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 104,
+												"mutability": "mutable",
+												"name": "_age",
+												"nameLocation": "2894:4:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 107,
+												"src": "2886:12:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 103,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "2886:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2884:16:0"
+									},
+									"returnParameters": {
+										"id": 106,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "2909:0:0"
+									},
+									"scope": 149,
+									"src": "2868:42:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 108,
+										"nodeType": "StructuredDocumentation",
+										"src": "2918:81:0",
+										"text": " @dev This function set the type of this SingleDigitalObject"
+									},
+									"functionSelector": "0b54cbfb",
+									"id": 114,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "setType",
+									"nameLocation": "3014:7:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 112,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 111,
+												"mutability": "mutable",
+												"name": "_type",
+												"nameLocation": "3030:5:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 114,
+												"src": "3024:11:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_enum$_typeT_$6",
+													"typeString": "enum ISingleDigitalObject.typeT"
+												},
+												"typeName": {
+													"id": 110,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 109,
+														"name": "typeT",
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 6,
+														"src": "3024:5:0"
+													},
+													"referencedDeclaration": 6,
+													"src": "3024:5:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_enum$_typeT_$6",
+														"typeString": "enum ISingleDigitalObject.typeT"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3022:15:0"
+									},
+									"returnParameters": {
+										"id": 113,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "3046:0:0"
+									},
+									"scope": 149,
+									"src": "3005:42:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 115,
+										"nodeType": "StructuredDocumentation",
+										"src": "3055:82:0",
+										"text": " @dev This function set the price of this SingleDigitalObject"
+									},
+									"functionSelector": "91b7f5ed",
+									"id": 120,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "setPrice",
+									"nameLocation": "3152:8:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 118,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 117,
+												"mutability": "mutable",
+												"name": "_price",
+												"nameLocation": "3171:6:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 120,
+												"src": "3163:14:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 116,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "3163:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3161:18:0"
+									},
+									"returnParameters": {
+										"id": 119,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "3188:0:0"
+									},
+									"scope": 149,
+									"src": "3143:46:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 121,
+										"nodeType": "StructuredDocumentation",
+										"src": "3343:82:0",
+										"text": " @dev This function adds the ( `_actor` ) to the actor array "
+									},
+									"functionSelector": "5fcd689e",
+									"id": 127,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "setActor",
+									"nameLocation": "3440:8:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 125,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 124,
+												"mutability": "mutable",
+												"name": "_actor",
+												"nameLocation": "3468:6:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 127,
+												"src": "3451:23:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+													"typeString": "address[]"
+												},
+												"typeName": {
+													"baseType": {
+														"id": 122,
+														"name": "address",
+														"nodeType": "ElementaryTypeName",
+														"src": "3451:7:0",
+														"stateMutability": "nonpayable",
+														"typeDescriptions": {
+															"typeIdentifier": "t_address",
+															"typeString": "address"
+														}
+													},
+													"id": 123,
+													"nodeType": "ArrayTypeName",
+													"src": "3451:9:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+														"typeString": "address[]"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3449:27:0"
+									},
+									"returnParameters": {
+										"id": 126,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "3485:0:0"
+									},
+									"scope": 149,
+									"src": "3431:55:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 128,
+										"nodeType": "StructuredDocumentation",
+										"src": "3640:86:0",
+										"text": " @dev This function adds the ( `_company` ) to the company array "
+									},
+									"functionSelector": "667de587",
+									"id": 134,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "setCompany",
+									"nameLocation": "3741:10:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 132,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 131,
+												"mutability": "mutable",
+												"name": "_company",
+												"nameLocation": "3771:8:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 134,
+												"src": "3754:25:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+													"typeString": "address[]"
+												},
+												"typeName": {
+													"baseType": {
+														"id": 129,
+														"name": "address",
+														"nodeType": "ElementaryTypeName",
+														"src": "3754:7:0",
+														"stateMutability": "nonpayable",
+														"typeDescriptions": {
+															"typeIdentifier": "t_address",
+															"typeString": "address"
+														}
+													},
+													"id": 130,
+													"nodeType": "ArrayTypeName",
+													"src": "3754:9:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+														"typeString": "address[]"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "3752:29:0"
+									},
+									"returnParameters": {
+										"id": 133,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "3790:0:0"
+									},
+									"scope": 149,
+									"src": "3732:59:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 135,
+										"nodeType": "StructuredDocumentation",
+										"src": "3945:102:0",
+										"text": " @dev This function adds the ( `_synchronization` ) to the synchronization array "
+									},
+									"functionSelector": "a34d8460",
+									"id": 141,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "setSynchronization",
+									"nameLocation": "4062:18:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 139,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 138,
+												"mutability": "mutable",
+												"name": "_synchronization",
+												"nameLocation": "4100:16:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 141,
+												"src": "4083:33:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+													"typeString": "address[]"
+												},
+												"typeName": {
+													"baseType": {
+														"id": 136,
+														"name": "address",
+														"nodeType": "ElementaryTypeName",
+														"src": "4083:7:0",
+														"stateMutability": "nonpayable",
+														"typeDescriptions": {
+															"typeIdentifier": "t_address",
+															"typeString": "address"
+														}
+													},
+													"id": 137,
+													"nodeType": "ArrayTypeName",
+													"src": "4083:9:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+														"typeString": "address[]"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "4081:37:0"
+									},
+									"returnParameters": {
+										"id": 140,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "4127:0:0"
+									},
+									"scope": 149,
+									"src": "4053:75:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 142,
+										"nodeType": "StructuredDocumentation",
+										"src": "4282:66:0",
+										"text": " @dev This function set the new distribution "
+									},
+									"functionSelector": "4956f4eb",
+									"id": 148,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "setDistribution",
+									"nameLocation": "4363:15:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 146,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 145,
+												"mutability": "mutable",
+												"name": "_distribution",
+												"nameLocation": "4398:13:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 148,
+												"src": "4381:30:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+													"typeString": "uint256[]"
+												},
+												"typeName": {
+													"baseType": {
+														"id": 143,
+														"name": "uint256",
+														"nodeType": "ElementaryTypeName",
+														"src": "4381:7:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_uint256",
+															"typeString": "uint256"
+														}
+													},
+													"id": 144,
+													"nodeType": "ArrayTypeName",
+													"src": "4381:9:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+														"typeString": "uint256[]"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "4379:34:0"
+									},
+									"returnParameters": {
+										"id": 147,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "4422:0:0"
+									},
+									"scope": 149,
+									"src": "4354:69:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								}
+							],
+							"scope": 150,
+							"src": "127:4313:0",
+							"usedErrors": []
+						}
+					],
+					"src": "33:4407:0"
+				},
+				"id": 0
+			}
+		}
+	}
+}

@@ -1,0 +1,224 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "AddLicense",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "PriceDifference",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "getNumberOfLicense",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_license",
+						"type": "uint256"
+					}
+				],
+				"name": "getPriceOfLicense",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_license",
+						"type": "uint256"
+					}
+				],
+				"name": "isLicense",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_newLicense",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_oldLicense",
+						"type": "uint256"
+					}
+				],
+				"name": "priceDifferenceOfLicense",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_price",
+						"type": "uint256"
+					}
+				],
+				"name": "setLicense",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_license",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_price",
+						"type": "uint256"
+					}
+				],
+				"name": "setPriceOfLicense",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Interface of the License contract",
+			"events": {
+				"AddLicense(uint256,uint256)": {
+					"details": "Emitted when a new license is added"
+				},
+				"PriceDifference(uint256,uint256,uint256)": {
+					"details": "Emitted when a new price is calculated."
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"getNumberOfLicense()": {
+					"details": "This function returns the number of licenses"
+				},
+				"getPriceOfLicense(uint256)": {
+					"details": "This function returns the price of (uint256)( `_license` )"
+				},
+				"isLicense(uint256)": {
+					"details": "This function returns true if the (uint256)( `_license` ) exist"
+				},
+				"priceDifferenceOfLicense(uint256,uint256)": {
+					"details": "This function returns the price difference between (uint256)( `_newLicense` ) and (uint256)( `_oldLicense` )"
+				},
+				"setLicense(uint256)": {
+					"details": "This function adds to licenseToPrice map in position numberOfLicense the ( `_price` ) "
+				},
+				"setPriceOfLicense(uint256,uint256)": {
+					"details": "This function set the (uint256)( `_price` ) of (uint256)( `_license` )"
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"interfaces/License_Interface.sol": "ILicense"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"interfaces/License_Interface.sol": {
+			"keccak256": "0xcdbe0c5618edb1e6ccb938c8a9c1f67756eff2d4fb7cf435baac82a95c193910",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4a738ec24acc40d71f95855a2e8f262d35aa8d4e8645f8fdaebbc4aa4c8f8d7c",
+				"dweb:/ipfs/QmR7ifND7ARCefxVuvm9sWykk9nqSTrNkXnJWEMnsqpAd3"
+			]
+		}
+	},
+	"version": 1
+}

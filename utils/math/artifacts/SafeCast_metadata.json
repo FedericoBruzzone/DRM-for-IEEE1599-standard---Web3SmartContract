@@ -1,0 +1,46 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"details": "Collection of functions related to uint/int safe cast ",
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"utils/math/SafeCast.sol": "SafeCast"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"utils/math/SafeCast.sol": {
+			"keccak256": "0xb30ac0cd8cfdcc85c462916e9ed5f41a21d1b7aa55c118eda5995819652ae31e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://71248076a4c71f9afe230cf73af2c9d9da71e5789703229381d73e7a0af019b9",
+				"dweb:/ipfs/QmRSWB8kULncoCey387HpCo4xVgtVsyhWTpqnVBS7A8jXX"
+			]
+		}
+	},
+	"version": 1
+}

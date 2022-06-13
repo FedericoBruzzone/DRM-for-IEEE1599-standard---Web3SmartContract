@@ -1,0 +1,54 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"details": "Collection of functions related to \"advanced\" mathematical operations",
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"utils/math/PlusMath.sol": "PlusMath"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"utils/math/PlusMath.sol": {
+			"keccak256": "0xe7a39817c4d4ba93949591851f74c52d44743779afa5ee2f7ca51b1cc7c92208",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8430f34144954b084239f008ee0cfac525c57f3579e8c29951e922fec9bd57d2",
+				"dweb:/ipfs/QmdcJM4pCd1LG6qykfs5gCq8VDv5XFcAFQJm8MriVKhKhH"
+			]
+		},
+		"utils/math/SafeMath.sol": {
+			"keccak256": "0x4ed570b2e4241532775d5b93b3b0faa63a2d5485574caf459119a4f977f4b7c1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7227eeae0775346e011ba93db2a2accaf6ef50c8c1effc81dc5317140a261ee6",
+				"dweb:/ipfs/QmWy5HLF2UWRJQLhft2DTB5eF1YHQiFYcBs5FmRnFJjPHq"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,54 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"details": "Collection of functions related to compare elements. To use modifiers in contract function signatures, modifiers must be within an interface or contract, cannot be inside a library.   For this you use an interface or a contract that implements them within it.",
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"utils/compare/Compare_Interface.sol": "ICompare"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"utils/compare/Compare.sol": {
+			"keccak256": "0xb8b223257d7a853e0a1f1d4c042592e99acc6e6f1569b02533a795637371197c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8370ee3075c944cf4d2584a246fec54ed7b051ba4b74ed09e8db3bcd0651f80d",
+				"dweb:/ipfs/QmZ5Bj3MMHrKG7dDR6YhacFcy5UFdp6wwWy4kCDzjVXb8C"
+			]
+		},
+		"utils/compare/Compare_Interface.sol": {
+			"keccak256": "0x6e57c73890c3e3d97a9ad923d4414f94af2f2aefa8fa8fe14199df481dc5722c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ec3a8001a2afaf78ba51d467cb852418d7dfb10e25f2ebea0beb2c708e8b30cf",
+				"dweb:/ipfs/QmbeLkRFDHobtB45hqvXV7E5NvBMkDEt6QBu2ekVRSwCLK"
+			]
+		}
+	},
+	"version": 1
+}

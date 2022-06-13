@@ -1,0 +1,46 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"details": "Collection of function related to Block and Transaction Properties There are special variables and functions which always exist in the  global namespace and are mainly used to provide information about the blockchain or are general-use utility functions. The values of all members of msg, including msg.sender and msg.value can change for every external function call. This includes calls to library functions.  When contracts are evaluated off-chain rather than in context of a transaction included in a block, you should not assume that block.* and tx.*  refer to values from any specific block or transaction. These values are provided by the EVM implementation that executes the contract and can be arbitrary.  Do not rely on block.timestamp or blockhash as a source of randomness, unless you know what you are doing. Both the timestamp and the block hash can be influenced by miners to some degree. Bad actors in the mining community can  for example run a casino payout function on a chosen hash and just retry a different hash if they did not receive any money. The current block timestamp must be strictly larger than the timestamp of the last block, but the only guarantee is that it will be somewhere  between the timestamps of two consecutive blocks in the canonical chain. The block hashes are not available for all blocks for scalability reasons. You can only access the hashes of the most recent 256 blocks, all other values will be zero.",
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"utils/Context.sol": "Context"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"utils/Context.sol": {
+			"keccak256": "0xf421acab26d86c8e2676a8f8f09ddba5c8b869b7112e905238d202618ce9dc97",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bc1300401374d5d154f1032423a7e50f9a87f9b2aa45a562ef0459aa8fd089f8",
+				"dweb:/ipfs/QmXAGmmMroVZB5HBJyBP652sMYRpw39gu2pXZ6paasAUVR"
+			]
+		}
+	},
+	"version": 1
+}

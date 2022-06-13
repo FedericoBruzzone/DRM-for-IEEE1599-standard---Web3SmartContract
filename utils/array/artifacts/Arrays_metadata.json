@@ -1,0 +1,54 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"details": "Collection of functions related to array types.",
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"utils/array/Arrays.sol": "Arrays"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"utils/array/Arrays.sol": {
+			"keccak256": "0x61f12b4d3131d82a9e8264783e8e4fc04bbd00fff6e8ec0010a8e6b352c7ad6a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c2cf25b7b91808b63dbd260ceb51391c7d31caab10d68d0e79e435ef267d0c8b",
+				"dweb:/ipfs/QmUXk1qWkKZ8JHENUk9nCh1Y7GSsrwXsiCmW5ruis41KkL"
+			]
+		},
+		"utils/math/Math.sol": {
+			"keccak256": "0xace887fc1438c755082ff17f6be391f4317a4eefa0c43bd991da5cfcce8f9506",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4806d5b3d43c140f940e27719341526689a83c02e1b648ca7907c8bc9e89ff74",
+				"dweb:/ipfs/QmSHqR1q6psmCvNp9jdC3mqbeB57zcxydmCALaimZ7tRFJ"
+			]
+		}
+	},
+	"version": 1
+}

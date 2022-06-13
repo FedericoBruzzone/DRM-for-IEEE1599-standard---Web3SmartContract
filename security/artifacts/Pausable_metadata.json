@@ -1,0 +1,109 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "Paused",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "Unpaused",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "paused",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Contract module which allows children to implement an emergency stop mechanism that can be triggered by an authorized account.",
+			"events": {
+				"Paused(address)": {
+					"details": "Emitted when the pause is triggered by `account`."
+				},
+				"Unpaused(address)": {
+					"details": "Emitted when the pause is lifted by `account`."
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"constructor": {
+					"details": "Initializes the contract in unpaused state."
+				},
+				"paused()": {
+					"details": "Returns true if the contract is paused, and false otherwise."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"security/Pausable.sol": "Pausable"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"security/Pausable.sol": {
+			"keccak256": "0x2cf95522e698185bfc6aef97d2acadab456309c066c76edf34eb2cf5efb563c8",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ec14a4e3f7c0fc1687dd61d632a191fd0de7aa732cd4899034d112acab3a3cfd",
+				"dweb:/ipfs/QmPZvSxryQwpPFzW4xHABzq88XfssKLneNX8dHTDrFijL4"
+			]
+		},
+		"utils/Context.sol": {
+			"keccak256": "0xf421acab26d86c8e2676a8f8f09ddba5c8b869b7112e905238d202618ce9dc97",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bc1300401374d5d154f1032423a7e50f9a87f9b2aa45a562ef0459aa8fd089f8",
+				"dweb:/ipfs/QmXAGmmMroVZB5HBJyBP652sMYRpw39gu2pXZ6paasAUVR"
+			]
+		}
+	},
+	"version": 1
+}

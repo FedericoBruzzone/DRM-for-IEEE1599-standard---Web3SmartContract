@@ -16,7 +16,6 @@ interface ILicense
      */
     event PriceDifference ( uint256, uint256, uint256 ); // newPrice, oldPrice, differencePrice
 
-
     /** 
      * @dev This function returns the price of (uint256)( `_license` )
      */
@@ -26,7 +25,6 @@ interface ILicense
      * @dev This function returns the number of licenses
      */
     function getNumberOfLicense ( ) external view returns ( uint256 );
-
 
     /** 
      * @dev This function returns true if the (uint256)( `_license` ) exist
@@ -43,13 +41,8 @@ interface ILicense
      */
     function setPriceOfLicense ( uint256 _license, uint256 _price ) external; 
     
-
     /** 
      * @dev This function returns the price difference between (uint256)( `_newLicense` ) and (uint256)( `_oldLicense` )
      */
     function priceDifferenceOfLicense ( uint256 _newLicense, uint256 _oldLicense ) external returns ( uint256 );
-    
-
-    
-
 }

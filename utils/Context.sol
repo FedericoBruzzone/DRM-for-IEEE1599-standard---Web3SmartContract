@@ -26,7 +26,7 @@ abstract contract Context {
      * @dev Return the sender of the message (current call)
      */
     function _msgSender () internal view virtual 
-                          returns ( address ) 
+                           returns ( address ) 
     {
         return msg.sender;
     }
@@ -35,7 +35,7 @@ abstract contract Context {
      * @dev Return the number of wei sent with the message
      */
     function _msgValue () internal view virtual 
-                         returns ( uint256 ) 
+                          returns ( uint256 ) 
     {
         return msg.value;
     }
@@ -44,7 +44,7 @@ abstract contract Context {
      * @dev Return complete calldata
      */
     function _msgData () internal view virtual 
-                        returns ( bytes calldata ) 
+                         returns ( bytes calldata ) 
     {
         return msg.data;
     }
@@ -80,7 +80,7 @@ abstract contract Context {
      * @dev Return the current chain id
      */
     function _blockChainid () internal view virtual 
-                             returns ( uint )
+                              returns ( uint )
     {
         return block.chainid;
     }
@@ -134,7 +134,7 @@ abstract contract Context {
      * @dev Return the remaining gas
      */
     function _gasleft () internal view virtual 
-                        returns ( uint256 )
+                         returns ( uint256 )
     {
         return gasleft();
     }

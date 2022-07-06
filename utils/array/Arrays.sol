@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "../math/Math.sol";
+import "../math/PlusMath.sol";
 
 /**
  * @dev Collection of functions related to array types.
@@ -193,7 +193,7 @@ library Arrays
         uint256 high = _array.length;
 
         while (low < high) {
-            uint256 mid = Math.average(low, high);
+            uint256 mid = PlusMath.average(low, high);
             if (_array[mid] > _element) {
                 high = mid;
             } else {

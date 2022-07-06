@@ -40,7 +40,8 @@ library Compare {
      */
     modifier compareStringsI ( string memory _a, string memory _b  ) 
     {
-        require ( keccak256 ( abi.encodePacked( ( _a ) ) ) == keccak256 ( abi.encodePacked ( ( _b ) ) ), "Compare Strings: the two strings are not the same" );
+        require ( keccak256 ( abi.encodePacked( ( _a ) ) ) == keccak256 ( abi.encodePacked ( ( _b ) ) ), 
+                  "Compare Strings: the two strings are not the same" );
         _;
     }
 
@@ -49,7 +50,8 @@ library Compare {
      */
     modifier compareUint256I ( uint256 _a, uint256 _b  ) 
     {
-        require ( keccak256 ( abi.encodePacked( ( _a ) ) ) == keccak256 ( abi.encodePacked( ( _b ) ) ), "Compare Uint256: the two uint256 are not the same" );
+        require ( keccak256 ( abi.encodePacked( ( _a ) ) ) == keccak256 ( abi.encodePacked( ( _b ) ) ), 
+                  "Compare Uint256: the two uint256 are not the same" );
         _;
     }
 

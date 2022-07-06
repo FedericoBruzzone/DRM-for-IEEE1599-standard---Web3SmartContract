@@ -1,1 +1,1 @@
-# DRM-for-IEEE1599-standard---Web3SmartContract
+# smartcontract_DRM_for_IEEE1599_standard

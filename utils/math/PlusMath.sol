@@ -7,7 +7,8 @@ import "./SafeMath.sol";
  * @dev Collection of functions related to "advanced" mathematical operations
  */
 
-library PlusMath {
+library PlusMath 
+{
 
     /**
      * @dev Returns the largest of two numbers.

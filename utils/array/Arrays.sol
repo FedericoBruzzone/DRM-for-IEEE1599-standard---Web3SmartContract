@@ -151,7 +151,7 @@ library Arrays
     /**
      * @dev This function returns true if the (address)(`_address`) is in the (address)(`_array`)
      */
-    function elementSearch ( address [] memory _array, address _address )  internal pure returns ( bool )
+    function isElement ( address [] memory _array, address _address )  internal pure returns ( bool )
     {
         for ( uint256 i = 0; i < _array.length; i++)
         {

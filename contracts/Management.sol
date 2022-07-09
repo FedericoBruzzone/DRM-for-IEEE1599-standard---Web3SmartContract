@@ -47,7 +47,7 @@ contract Management is IManagement,
         packageDigitalObject[_msgSender()][_packageDigitalObject] = _license;
     }
     
-    function setSingleDigitalObjectLicense ( SingleDigitalObject _singleDigitalObject ) public virtual override 
+    function setSingleDigitalObject ( SingleDigitalObject _singleDigitalObject ) public virtual override 
                                                                                         whenNotPaused()
     {
         singleDigitalObject[_msgSender()].push(_singleDigitalObject);

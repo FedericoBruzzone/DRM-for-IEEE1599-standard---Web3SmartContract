@@ -53,7 +53,7 @@ contract Management is IManagement,
         singleDigitalObject[_msgSender()].push(_singleDigitalObject);
     }
 
-    function buyPackageDigitalObjectLicense ( PackageDigitalObject _packageDigitalObject, uint256 _license ) public payable virtual override 
+    function buyPackageDigitalObject ( PackageDigitalObject _packageDigitalObject, uint256 _license ) public payable virtual override 
                                                                                                              whenNotPaused()
     {
         _packageDigitalObject.payActorOfPackage { value:_msgValue() } ( _license);

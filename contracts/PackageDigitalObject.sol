@@ -26,7 +26,7 @@ contract PackageDigitalObject is IPackageDigitalObject,
     string                         private name;
     string                         private symbol;
     mapping ( address => uint256 ) private addressToEarnings;
-    SingleDigitalObject[]          private singleDigitalObject; // SingleDigitalObject is an address
+    SingleDigitalObject[]          public singleDigitalObject; // SingleDigitalObject is an address
     License                        public license;
     
 

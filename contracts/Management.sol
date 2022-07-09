@@ -33,7 +33,7 @@ contract Management is IManagement,
         return packageDigitalObject[_address][_packageDigitalObject];
     }
     
-    function getSingleDigitalObjectLicenseOfAddress ( address _address ) external view virtual override 
+    function getSingleDigitalObjectLicenseOfAddress ( address _address ) public view virtual override 
                                                                          whenNotPaused() 
                                                                          returns ( SingleDigitalObject[] memory ) 
     {

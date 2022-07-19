@@ -1,1 +1,1 @@
-# smartcontract_DRM_for_IEEE1599_standard
+# IP_DRM_for_IEEE1599standard

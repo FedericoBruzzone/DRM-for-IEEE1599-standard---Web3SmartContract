@@ -1,7 +1,8 @@
 # IP_DRM_for_IEEE1599standard
 
+[![License](https://img.shields.io/badge/License-MIT-blue)](https://github.com/FedericoBruzzone/IP_DRM_for_IEEE1599standard/edit/master/License)
 [![Make with](https://img.shields.io/badge/Make%20with-Solidity-orange)](https://en.wikipedia.org/wiki/Solidity)
-[![NodeJS](https://img.shields.io/badge/NodeJS-12.0.0-green)](https://nodejs.dev/learn)
+[![NodeJS](https://img.shields.io/badge/NodeJS-v12.0.0-green)](https://nodejs.dev/learn)
 [![stability-experimental](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/emersion/stability-badges#experimental)
 
 # Introduction 

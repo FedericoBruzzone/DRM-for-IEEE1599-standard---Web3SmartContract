@@ -6,7 +6,7 @@
 [![stability-experimental](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/emersion/stability-badges#experimental)
 
 # Introduction 
-The management of intellectual property and Digital Rights Management on blockchain for the IEEE 1599 standard, arises because there is a need to protect the intellectual property of those who collaborated in the creation of the file IEEE 1599, and at the same time protect the companies or composers who own the rights of a particular digital object (audio file, score, etc...).
+The management of intellectual property and Digital Rights Management on blockchain for the IEEE 1599 standard, arises because there is a need to protect the intellectual property of those who collaborated in the creation of the file IEEE 1599, and at the same time protect the companies or composers who own the rights of a particular digital object (audio file, video file, score, etc...).
 
 # Setup 
 
